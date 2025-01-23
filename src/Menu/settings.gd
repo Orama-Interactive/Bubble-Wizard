@@ -25,9 +25,15 @@ func _ready() -> void:
 		check_box.button_pressed = true
 
 	master_volume_slider.grab_focus()
-	master_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))) * 100
-	music_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))) * 100
-	sounds_volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Sounds"))) * 100
+	master_volume_slider.value = (
+		db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))) * 100
+	)
+	music_volume_slider.value = (
+		db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))) * 100
+	)
+	sounds_volume_slider.value = (
+		db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Sounds"))) * 100
+	)
 
 
 func _on_language_pressed(locale: String) -> void:

@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5qx5fgnorbtr"]
+
+[ext_resource type="Script" path="res://src/Nodes/ValueSlider.gd" id="1_3yvg7"]
+[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/main_theme.tres" id="1_tmhy1"]
+[ext_resource type="Script" path="res://src/Menu/settings.gd" id="2_8ap4q"]
+
+[node name="Settings" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tmhy1")
+script = ExtResource("2_8ap4q")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_right = 90
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Languages" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Languages"]
+layout_mode = 2
+text = "Language"
+
+[node name="SettingsContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master volume:"
+
+[node name="MasterVolumeSlider" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/SettingsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+theme_type_variation = &"ValueSlider"
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+script = ExtResource("1_3yvg7")
+
+[node name="MusicVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music volume:"
+
+[node name="MusicVolumeSlider" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/SettingsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+theme_type_variation = &"ValueSlider"
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+script = ExtResource("1_3yvg7")
+
+[node name="SoundsVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sounds volume:"
+
+[node name="SoundsVolumeSlider" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/SettingsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+theme_type_variation = &"ValueSlider"
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+script = ExtResource("1_3yvg7")
+
+[node name="ControlsButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+
+[node name="ReturnToMenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return to menu"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SettingsContainer/MasterVolumeSlider" to="." method="_on_volume_slider_value_changed" binds= [&"Master"]]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SettingsContainer/MusicVolumeSlider" to="." method="_on_volume_slider_value_changed" binds= [&"Music"]]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SettingsContainer/SoundsVolumeSlider" to="." method="_on_volume_slider_value_changed" binds= [&"Sounds"]]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]

@@ -1,0 +1,62 @@
+#
+# FIRST AUTHOR < EMAIL @ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: GGJ_2025n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: src/Level.tscn
+msgid "Paused"
+msgstr ""
+
+#: src/Level.tscn
+msgid "Resume"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Language"
+msgstr ""
+
+#: src/Menu/settings.gd
+#: src/Menu/settings.tscn
+msgid "Master volume:"
+msgstr ""
+
+#: src/Menu/settings.gd
+#: src/Menu/settings.tscn
+msgid "Music volume:"
+msgstr ""
+
+#: src/Menu/settings.gd
+#: src/Menu/settings.tscn
+msgid "Sounds volume:"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Settings"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "English"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Greek"
+msgstr ""
+
+#: src/Menu/menu.tscn
+msgid "Credits"
+msgstr ""
+
+#: src/Menu/menu.tscn
+msgid "Exit game"
+msgstr ""
+
+#: src/Level.tscn
+#: src/Menu/settings.tscn
+msgid "Return to menu"
+msgstr ""

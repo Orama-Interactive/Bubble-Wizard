@@ -1,0 +1,65 @@
+#
+# FIRST AUTHOR < EMAIL @ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: GGJ_2025\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/Menu/credits.tscn
+msgid "By Orama Interactive"
+msgstr "By Orama Interactive"
+
+#: src/Menu/settings.tscn
+msgid "Language"
+msgstr ""
+
+#: src/Menu/settings.gd src/Menu/settings.tscn
+msgid "Master volume:"
+msgstr "Master volume:"
+
+#: src/Menu/settings.gd src/Menu/settings.tscn
+msgid "Music volume:"
+msgstr "Music volume:"
+
+#: src/Menu/settings.gd src/Menu/settings.tscn
+msgid "Sounds volume:"
+msgstr "Sounds volume:"
+
+#: src/Menu/settings.tscn
+msgid "Settings"
+msgstr "Settings"
+
+#: src/Menu/settings.tscn
+msgid "English"
+msgstr "English"
+
+#: src/Menu/settings.tscn
+msgid "Greek"
+msgstr "Greek"
+
+#: src/Menu/menu.tscn
+msgid "New game"
+msgstr "New game"
+
+#: src/Menu/menu.tscn
+msgid "Load game"
+msgstr "Load game"
+
+#: src/Menu/menu.tscn
+msgid "Credits"
+msgstr "Credits"
+
+#: src/Menu/menu.tscn
+msgid "Exit game"
+msgstr "Exit game"
+
+#: src/Menu/settings.tscn
+msgid "Return to menu"
+msgstr "Return to menu"

@@ -18,3 +18,8 @@ shape = SubResource("CapsuleShape2D_qpkk0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="BubbleTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timer_timeout"]

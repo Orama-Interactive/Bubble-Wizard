@@ -11,11 +11,11 @@ extends CharacterBody2D
 @export_range(0.5, 3) var descending_gravity_factor := 1.1
 @export var terminal_velocity := 400.0
 @export_category("Bubble form")
-@export var bubble_duration := 2.0
 @export var bubble_speed := 120.0
 @export var bubble_vertical_speed := 1.0
 @export var bubble_decelerate := 10.0
 @export var bubble_gravity_scale := 0.4
+@export var bubble_duration := 2.0
 var can_jump := false
 var jump_pressed := false
 var bubble_form := false:
@@ -23,6 +23,13 @@ var bubble_form := false:
 		bubble_form = value
 		if bubble_form:
 			can_jump = true
+			bubble_timer.start()
+
+@onready var bubble_timer: Timer = $BubbleTimer
+
+
+func _ready() -> void:
+	bubble_timer.wait_time = bubble_duration
 
 
 func _physics_process(delta: float) -> void:
@@ -109,3 +116,7 @@ func _coyote_time() -> void:
 func _jump_buffer() -> void:
 	await get_tree().create_timer(jump_buffer).timeout
 	jump_pressed = false
+
+
+func _on_bubble_timer_timeout() -> void:
+	bubble_form = false

@@ -1,7 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=11 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://nauv017xuord" path="res://assets/player.png" id="2_yfy0j"]
+[ext_resource type="Texture2D" uid="uid://cmy0jcv4tigfd" path="res://player/idle/idle_0001.png" id="3_oib21"]
+[ext_resource type="Texture2D" uid="uid://bpdo5wqiochr7" path="res://player/idle/idle_0002.png" id="4_rfb1f"]
+[ext_resource type="Texture2D" uid="uid://8mpb8aral73w" path="res://player/idle/idle_0003.png" id="5_svp61"]
+[ext_resource type="Texture2D" uid="uid://cd78d74xmp12q" path="res://player/idle/idle_0004.png" id="6_6crsk"]
+[ext_resource type="Texture2D" uid="uid://dxmu5sevbimek" path="res://player/idle/idle_0005.png" id="7_n6e6m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hjps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oib21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rfb1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_svp61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6crsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n6e6m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dftk0"]
 radius = 9.0
@@ -17,6 +45,10 @@ script = ExtResource("1_r1i7a")
 
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_yfy0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3hjps")
+animation = &"idle"
 
 [node name="BubbleArea2D" type="Area2D" parent="."]
 collision_mask = 2

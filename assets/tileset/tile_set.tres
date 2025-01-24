@@ -143,11 +143,17 @@ texture = ExtResource("1_4affs")
 8:13/0 = 0
 9:13/0 = 0
 1:14/0 = 0
+1:14/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, 1.875, 8, 1.875, 8, 8, -8, 8)
 2:14/0 = 0
+2:14/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, 1.875, 8, 1.875, 8, 8, -8, 8)
 3:14/0 = 0
+3:14/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, 1.875, 8, 1.875, 8, 8, -8, 8)
 4:14/0 = 0
+4:14/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, 1.875, 8, 1.875, 8, 8, -8, 8)
 5:14/0 = 0
+5:14/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, 1.875, 8, 1.875, 8, 8, -8, 8)
 6:14/0 = 0
+6:14/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, 1.875, 8, 1.875, 8, 8, -8, 8)
 10:14/0 = 0
 11:14/0 = 0
 12:14/0 = 0
@@ -161,4 +167,5 @@ texture = ExtResource("1_4affs")
 
 [resource]
 physics_layer_0/collision_layer = 2
+physics_layer_1/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_iwok4")

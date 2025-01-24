@@ -135,9 +135,11 @@ func _on_charge_bubble_timer_timeout() -> void:
 	position.y -= 32
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body == self:
-		return
+func _on_bubble_area_2d_body_entered(body: Node2D) -> void:
 	if not bubble_form and last_vertical_velocity > fall_damage_velocity:
 		_handle_death()
 	bubble_form = false
+
+
+func _on_spike_area_2d_body_entered(body: Node2D) -> void:
+	_handle_death()

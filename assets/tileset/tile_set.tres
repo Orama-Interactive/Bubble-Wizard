@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cs2x6yrkunc0n"]
+
+[ext_resource type="Texture2D" uid="uid://ci4a8cnkql6ii" path="res://assets/tileset/pixel-style-game-dirt-grass-260nw-2107984094.png" id="1_lpfv4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_awt2o"]
+texture = ExtResource("1_lpfv4")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[resource]
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_awt2o")

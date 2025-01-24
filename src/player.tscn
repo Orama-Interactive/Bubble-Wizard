@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=5 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://dauviqxfkhkx2" path="res://icon.svg" id="2_bv0hk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dftk0"]
+radius = 39.0
+height = 148.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpkk0"]
 radius = 33.0
@@ -13,6 +17,11 @@ script = ExtResource("1_r1i7a")
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_bv0hk")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_dftk0")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qpkk0")
 
@@ -22,4 +31,5 @@ position_smoothing_enabled = true
 [node name="BubbleTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timer_timeout"]

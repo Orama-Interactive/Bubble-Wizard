@@ -41,37 +41,8 @@ func _physics_process(delta: float) -> void:
 		_normal_movement(delta)
 
 
-func _bubble_movement(delta: float) -> void:
-	if _handle_jump():
-		bubble_form = false
-		return
-	#var direction := Input.get_vector(&"left", &"right", &"up", &"down")
-	var direction_horiz :=  Input.get_axis(&"left", &"right")
-	if direction_horiz:
-		velocity.x = direction_horiz * bubble_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, bubble_decelerate)
-		#velocity.y = move_toward(velocity.y, 0, bubble_decelerate)
-
-	var direction_vert := Input.get_axis(&"up", &"down")
-	#if direction_vert:
-		#velocity.y = direction_vert * bubble_speed
-	#else:
-		#velocity.y = move_toward(velocity.y, 0, bubble_decelerate)
-	var gravity := get_gravity() * delta * bubble_gravity_scale
-	if direction_vert:
-		#gravity = get_gravity() * delta * bubble_gravity_scale * direction_vert * ver
-		gravity *= direction_vert * bubble_vertical_speed
-	velocity += gravity
-	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
-	#print(direction_horiz, " ", velocity)
-	#print(gravity, " ", velocity)
-	move_and_slide()
-
-
 func _normal_movement(delta: float) -> void:
 	_charge_bubble_form()
-	# Add the gravity.
 	if is_on_floor():
 		can_jump = true
 	else:
@@ -84,14 +55,31 @@ func _normal_movement(delta: float) -> void:
 
 	_handle_jump()
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(&"left", &"right")
 	if direction:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
+	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
+	move_and_slide()
+
+
+func _bubble_movement(delta: float) -> void:
+	if _handle_jump():
+		bubble_form = false
+		return
+	var direction_horiz :=  Input.get_axis(&"left", &"right")
+	if direction_horiz:
+		velocity.x = direction_horiz * bubble_speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, bubble_decelerate)
+
+	var direction_vert := Input.get_axis(&"up", &"down")
+	var gravity := get_gravity() * delta * bubble_gravity_scale
+	if direction_vert:
+		gravity *= direction_vert * bubble_vertical_speed
+	velocity += gravity
 	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
 	move_and_slide()
 

@@ -1,26 +1,26 @@
 [gd_scene load_steps=6 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
-[ext_resource type="Texture2D" uid="uid://dauviqxfkhkx2" path="res://icon.svg" id="2_bv0hk"]
+[ext_resource type="Texture2D" uid="uid://nauv017xuord" path="res://assets/player.png" id="2_yfy0j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dftk0"]
-radius = 39.0
-height = 148.0
+radius = 9.0
+height = 26.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgyc7"]
-radius = 39.0
-height = 140.0
+radius = 9.0
+height = 26.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpkk0"]
-radius = 33.0
-height = 136.0
+radius = 8.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_r1i7a")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("2_bv0hk")
+texture = ExtResource("2_yfy0j")
 
 [node name="BubbleArea2D" type="Area2D" parent="."]
 collision_mask = 2
@@ -38,7 +38,7 @@ shape = SubResource("CapsuleShape2D_jgyc7")
 shape = SubResource("CapsuleShape2D_qpkk0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="BubbleTimer" type="Timer" parent="."]
 one_shot = true

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed := 300.0
 @export_category("Jumping and Gravity")
-@export var jump_velocity := -300.0
+@export var jump_velocity := -100.0
 @export var coyote_seconds := 0.2
 @export var jump_buffer := 0.2
 ## The strength at which your character will be pulled to the ground.

@@ -19,6 +19,14 @@ config/icon="res://icon.svg"
 
 Keychain="*res://addons/keychain/Keychain.gd"
 
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=144
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/keychain/plugin.cfg")
@@ -89,5 +97,6 @@ locale/translations=PackedStringArray("res://translations/en.po", "res://transla
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

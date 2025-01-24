@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=5 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://nauv017xuord" path="res://assets/player.png" id="2_yfy0j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dftk0"]
-radius = 9.0
-height = 26.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgyc7"]
 radius = 9.0
 height = 26.0
 
@@ -32,7 +28,13 @@ shape = SubResource("CapsuleShape2D_dftk0")
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeArea2D"]
-shape = SubResource("CapsuleShape2D_jgyc7")
+shape = SubResource("CapsuleShape2D_dftk0")
+
+[node name="PowerupArea2D" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerupArea2D"]
+shape = SubResource("CapsuleShape2D_dftk0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qpkk0")
@@ -48,5 +50,6 @@ one_shot = true
 
 [connection signal="body_entered" from="BubbleArea2D" to="." method="_on_bubble_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeArea2D" to="." method="_on_spike_area_2d_body_entered"]
+[connection signal="area_shape_entered" from="PowerupArea2D" to="." method="_on_powerup_area_2d_area_shape_entered"]
 [connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timer_timeout"]
 [connection signal="timeout" from="ChargeBubbleTimer" to="." method="_on_charge_bubble_timer_timeout"]

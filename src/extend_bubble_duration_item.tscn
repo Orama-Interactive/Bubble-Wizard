@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmkl8o4o8r40"]
+
+[ext_resource type="Texture2D" uid="uid://b24elshxdiu5r" path="res://assets/extend_bubble_duration_item.png" id="1_rqnno"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8o58q"]
+radius = 8.0
+
+[node name="ExtendBubbleDurationItem" type="Area2D"]
+collision_layer = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rqnno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8o58q")

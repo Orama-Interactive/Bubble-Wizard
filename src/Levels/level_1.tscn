@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://jd4r3in1a56h"]
+[gd_scene load_steps=4 format=4 uid="uid://jd4r3in1a56h"]
 
 [ext_resource type="PackedScene" uid="uid://wjau22rv2yfi" path="res://src/player.tscn" id="1_auxtx"]
 [ext_resource type="TileSet" uid="uid://cs2x6yrkunc0n" path="res://assets/tileset/tile_set.tres" id="3_7sqww"]
+[ext_resource type="PackedScene" uid="uid://cmkl8o4o8r40" path="res://src/extend_bubble_duration_item.tscn" id="3_qshmm"]
 
 [node name="Level1" type="Node2D"]
 
@@ -11,3 +12,6 @@ position = Vector2(115, 323)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABABcAAAABAAEAAAACABcAAAACAAEAAAADABcAAAACAAEAAAAEABcAAAACAAEAAAAFABcAAAACAAEAAAAGABcAAAACAAEAAAAHABcAAAACAAEAAAAIABcAAAACAAEAAAAJABcAAAACAAEAAAAKABcAAAACAAEAAAALABcAAAACAAEAAAAMABcAAAACAAEAAAANABcAAAACAAEAAAAOABcAAAACAAEAAAAPABcAAAACAAEAAAAQABcAAAACAAEAAAARABcAAAACAAEAAAASABcAAAACAAEAAAATABcAAAACAAEAAAAUABcAAAACAAEAAAAVABcAAAACAAEAAAAWABcAAAACAAEAAAAXABcAAAACAAEAAAAYABcAAAACAAEAAAAZABcAAAACAAEAAAAaABcAAAACAAEAAAAbABcAAAACAAEAAAAfABsAAAABAA4AAAAgABsAAAABAA4AAAAhABsAAAABAA4AAAAiABsAAAABAA4AAAAjABsAAAABAA4AAAAkABsAAAABAA4AAAAlABsAAAABAA4AAAAmABsAAAABAA4AAAAdABwAAAACAAEAAAAeABwAAAACAAEAAAAfABwAAAACAAEAAAAgABwAAAACAAEAAAAhABwAAAACAAEAAAAiABwAAAACAAEAAAAjABwAAAACAAEAAAAkABwAAAACAAEAAAAlABwAAAACAAEAAAAmABwAAAACAAEAAAAnABwAAAACAAEAAAAoABwAAAACAAEAAAA=")
 tile_set = ExtResource("3_7sqww")
+
+[node name="ExtendBubbleDurationItem" parent="." instance=ExtResource("3_qshmm")]
+position = Vector2(501, 372)

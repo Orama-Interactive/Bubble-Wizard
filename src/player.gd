@@ -143,3 +143,9 @@ func _on_bubble_area_2d_body_entered(_body: Node2D) -> void:
 
 func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
 	_handle_death()
+
+
+func _on_powerup_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if "ExtendBubbleDurationItem" in area.name and bubble_form:
+		bubble_timer.start()
+		area.queue_free()

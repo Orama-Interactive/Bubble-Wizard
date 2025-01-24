@@ -18,7 +18,11 @@ extends CharacterBody2D
 @export var bubble_gravity_scale := 0.4
 var can_jump := false
 var jump_pressed := false
-var bubble_form := false
+var bubble_form := false:
+	set(value):
+		bubble_form = value
+		if bubble_form:
+			can_jump = true
 
 
 func _physics_process(delta: float) -> void:
@@ -29,6 +33,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _bubble_movement(delta: float) -> void:
+	if _handle_jump():
+		bubble_form = false
+		return
 	#var direction := Input.get_vector(&"left", &"right", &"up", &"down")
 	var direction_horiz :=  Input.get_axis(&"left", &"right")
 	if direction_horiz:
@@ -54,6 +61,9 @@ func _bubble_movement(delta: float) -> void:
 
 
 func _normal_movement(delta: float) -> void:
+	if Input.is_action_just_released("charge_bubble"):
+		bubble_form = true
+		return
 	# Add the gravity.
 	if is_on_floor():
 		can_jump = true
@@ -65,14 +75,7 @@ func _normal_movement(delta: float) -> void:
 			gravity *= descending_gravity_factor
 		velocity += gravity
 
-	# Handle jump.
-	if Input.is_action_pressed(&"up"):
-		jump_pressed = true
-		_jump_buffer()
-	if velocity.y < 0 and Input.is_action_just_released(&"up"):
-		jump_pressed = false
-	if jump_pressed and can_jump:
-		velocity.y = jump_velocity
+	_handle_jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -84,6 +87,18 @@ func _normal_movement(delta: float) -> void:
 
 	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
 	move_and_slide()
+
+
+func _handle_jump() -> bool:
+	if Input.is_action_pressed(&"jump"):
+		jump_pressed = true
+		_jump_buffer()
+	if velocity.y < 0 and Input.is_action_just_released(&"jump"):
+		jump_pressed = false
+	if jump_pressed and can_jump:
+		velocity.y = jump_velocity
+		return true
+	return false
 
 
 func _coyote_time() -> void:

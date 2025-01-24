@@ -16,6 +16,7 @@ extends CharacterBody2D
 @export var bubble_decelerate := 10.0
 @export var bubble_gravity_scale := 0.2
 @export var bubble_duration := 2.0
+@export var bubble_charge_time := 1.2
 var can_jump := false
 var jump_pressed := false
 var bubble_form := false:
@@ -26,6 +27,7 @@ var bubble_form := false:
 			bubble_timer.start()
 
 @onready var bubble_timer: Timer = $BubbleTimer
+@onready var charge_bubble_timer: Timer = $ChargeBubbleTimer
 
 
 func _ready() -> void:
@@ -68,10 +70,7 @@ func _bubble_movement(delta: float) -> void:
 
 
 func _normal_movement(delta: float) -> void:
-	if Input.is_action_just_released("charge_bubble"):
-		bubble_form = true
-		position.y -= 32
-		return
+	_charge_bubble_form()
 	# Add the gravity.
 	if is_on_floor():
 		can_jump = true
@@ -119,8 +118,21 @@ func _jump_buffer() -> void:
 	jump_pressed = false
 
 
+func _charge_bubble_form() -> void:
+	if Input.is_action_just_pressed("charge_bubble"):
+		charge_bubble_timer.start()
+	if Input.is_action_just_released("charge_bubble"):
+		if not charge_bubble_timer.is_stopped():
+			charge_bubble_timer.stop()
+
+
 func _on_bubble_timer_timeout() -> void:
 	bubble_form = false
+
+
+func _on_charge_bubble_timer_timeout() -> void:
+	bubble_form = true
+	position.y -= 32
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

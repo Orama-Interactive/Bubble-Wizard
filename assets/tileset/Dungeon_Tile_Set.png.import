@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci4a8cnkql6ii"
-path="res://.godot/imported/pixel-style-game-dirt-grass-260nw-2107984094.png-97f6156d34c829b8317be45086d99337.ctex"
+uid="uid://b1jaq4xebl1xj"
+path="res://.godot/imported/Dungeon_Tile_Set.png-e91ba81b687236e7e821388fc45d2085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/pixel-style-game-dirt-grass-260nw-2107984094.png"
-dest_files=["res://.godot/imported/pixel-style-game-dirt-grass-260nw-2107984094.png-97f6156d34c829b8317be45086d99337.ctex"]
+source_file="res://assets/tileset/Dungeon_Tile_Set.png"
+dest_files=["res://.godot/imported/Dungeon_Tile_Set.png-e91ba81b687236e7e821388fc45d2085.ctex"]
 
 [params]
 

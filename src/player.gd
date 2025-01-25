@@ -1,13 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
-@export var horizontal_speed := 300.0
+@export var horizontal_speed := 220.0
 @export_category("Jumping and Gravity")
 @export var jump_velocity := -100.0
 @export var coyote_seconds := 0.2
 @export var jump_buffer := 0.05
 ## The strength at which your character will be pulled to the ground.
-@export_range(0, 20) var gravity_scale := 2.0
+@export_range(0, 20) var gravity_scale := 1.4
 ## Your player will move this amount faster when falling providing a less floaty jump curve.
 @export_range(0.5, 3) var descending_gravity_factor := 1.1
 @export var terminal_velocity := 1200.0
@@ -44,8 +44,9 @@ func _ready() -> void:
 	coyote_timer.wait_time = coyote_seconds
 	jump_buffer_timer.wait_time = jump_buffer
 	var camera := PlayerCamera.new()
-	get_parent().add_child.call_deferred(camera)
 	camera.player = self
+	camera.limit_left = 0
+	get_parent().add_child.call_deferred(camera)
 
 
 func _physics_process(delta: float) -> void:

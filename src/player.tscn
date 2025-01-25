@@ -65,7 +65,7 @@ script = ExtResource("1_r1i7a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3hjps")
 animation = &"idle"
-frame_progress = 0.337235
+frame_progress = 0.283163
 
 [node name="BubbleArea2D" type="Area2D" parent="."]
 collision_mask = 2
@@ -97,8 +97,16 @@ one_shot = true
 [node name="ChargeBubbleTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="BubbleArea2D" to="." method="_on_bubble_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeArea2D" to="." method="_on_spike_area_2d_body_entered"]
 [connection signal="area_shape_entered" from="PowerupArea2D" to="." method="_on_powerup_area_2d_area_shape_entered"]
 [connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timer_timeout"]
 [connection signal="timeout" from="ChargeBubbleTimer" to="." method="_on_charge_bubble_timer_timeout"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]

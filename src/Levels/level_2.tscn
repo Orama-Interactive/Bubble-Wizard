@@ -16,3 +16,17 @@ position = Vector2(69, 256)
 
 [node name="Door" parent="." instance=ExtResource("3_w2ltk")]
 position = Vector2(1732, 319)
+
+[node name="BubbleFormTutorialLabel" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 209.0
+offset_right = 324.0
+offset_bottom = 232.0
+text = "Hold Q to charge your bubble"
+
+[node name="BubbleFormTutorialLabel2" type="Label" parent="."]
+offset_left = 888.0
+offset_top = 163.0
+offset_right = 1116.0
+offset_bottom = 186.0
+text = "Be wary of fall damage!"

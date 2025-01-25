@@ -12,7 +12,7 @@ tile_map_data = PackedByteArray("AAD9//7/AAADAAIAAAD9////AAADAAIAAAD9/wAAAAADAAI
 tile_set = ExtResource("1_5nmgb")
 
 [node name="Player" parent="." instance=ExtResource("2_4x3xk")]
-position = Vector2(668, 256)
+position = Vector2(65, 278)
 
 [node name="Door" parent="." instance=ExtResource("3_22oip")]
 position = Vector2(1523, 287)

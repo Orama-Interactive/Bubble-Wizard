@@ -62,6 +62,8 @@ func _normal_movement(delta: float) -> void:
 	_charge_bubble_form()
 	if is_on_floor():
 		can_jump = true
+		if not bubble_form and last_vertical_velocity > fall_damage_velocity:
+			_handle_death()
 	else:
 		if can_jump and coyote_timer.is_stopped():
 			coyote_timer.start()
@@ -172,8 +174,6 @@ func _on_charge_bubble_timer_timeout() -> void:
 
 
 func _on_bubble_area_2d_body_entered(_body: Node2D) -> void:
-	if not bubble_form and last_vertical_velocity > fall_damage_velocity:
-		_handle_death()
 	bubble_form = false
 
 

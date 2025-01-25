@@ -90,7 +90,6 @@ func _normal_movement(delta: float) -> void:
 			charge_bubble_timer.stop()
 
 	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
-	print(velocity)
 	last_vertical_velocity = velocity.y
 	move_and_slide()
 

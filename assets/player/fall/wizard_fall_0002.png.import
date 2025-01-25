@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8mpb8aral73w"
-path="res://.godot/imported/idle_0003.png-9c45dd2393cfce63c7e02ece295ae5e4.ctex"
+uid="uid://d0753p5cpfk8j"
+path="res://.godot/imported/wizard_fall_0002.png-ed847d276fd94227f0fef6b1c51b1fd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/idle/idle_0003.png"
-dest_files=["res://.godot/imported/idle_0003.png-9c45dd2393cfce63c7e02ece295ae5e4.ctex"]
+source_file="res://assets/player/fall/wizard_fall_0002.png"
+dest_files=["res://.godot/imported/wizard_fall_0002.png-ed847d276fd94227f0fef6b1c51b1fd8.ctex"]
 
 [params]
 

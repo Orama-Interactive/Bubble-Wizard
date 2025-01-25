@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpdo5wqiochr7"
-path="res://.godot/imported/idle_0002.png-3af8cf2662933b233f18a3be3a2fdc75.ctex"
+uid="uid://bvtsxfpywma1s"
+path="res://.godot/imported/wizard_walking_0003.png-735fe632bd2cbc83dd7f6cf15a152e9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/idle/idle_0002.png"
-dest_files=["res://.godot/imported/idle_0002.png-3af8cf2662933b233f18a3be3a2fdc75.ctex"]
+source_file="res://assets/player/walking/wizard_walking_0003.png"
+dest_files=["res://.godot/imported/wizard_walking_0003.png-735fe632bd2cbc83dd7f6cf15a152e9f.ctex"]
 
 [params]
 

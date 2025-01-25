@@ -71,6 +71,13 @@ func _normal_movement(delta: float) -> void:
 		velocity += gravity
 
 	_handle_jump()
+	# Jump animations
+	if not is_zero_approx(velocity.y):
+		if velocity.y < 0 and velocity.y > -20:
+			animated_sprite_2d.play(&"jump_highest")
+		if velocity.y > 0:
+			animated_sprite_2d.play(&"fall")
+
 
 	var direction := _handle_horizontal_movement(horizontal_speed, horizontal_speed)
 	if not is_zero_approx(direction):
@@ -108,12 +115,15 @@ func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 	if direction > 0:
 		animated_sprite_2d.scale.x = 1
-		animated_sprite_2d.play(&"walk")
+		if is_zero_approx(velocity.y):
+			animated_sprite_2d.play(&"walk")
 	elif direction < 0:
 		animated_sprite_2d.scale.x = -1
-		animated_sprite_2d.play(&"walk")
+		if is_zero_approx(velocity.y):
+			animated_sprite_2d.play(&"walk")
 	else:
-		animated_sprite_2d.play(&"idle")
+		if is_zero_approx(velocity.y):
+			animated_sprite_2d.play(&"idle")
 	return direction
 
 
@@ -128,13 +138,14 @@ func _handle_jump() -> bool:
 			can_jump = false
 			coyote_timer.stop()
 			jump_buffer_timer.stop()
-	if jump_pressed and can_jump:
+	if jump_pressed and can_jump:  # Jump
 		var final_jump_velocity := jump_velocity
 		if bubble_form:
 			just_jumped_off_bubble = true
 		if just_jumped_off_bubble:
 			final_jump_velocity *= 2.0
 		velocity.y = final_jump_velocity
+		animated_sprite_2d.play(&"jump_up")
 		return true
 	return false
 

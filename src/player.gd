@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var horizontal_speed := 300.0
@@ -42,6 +43,9 @@ func _ready() -> void:
 	charge_bubble_timer.wait_time = bubble_charge_time
 	coyote_timer.wait_time = coyote_seconds
 	jump_buffer_timer.wait_time = jump_buffer
+	var camera := PlayerCamera.new()
+	get_parent().add_child.call_deferred(camera)
+	camera.player = self
 
 
 func _physics_process(delta: float) -> void:
@@ -149,6 +153,7 @@ func _on_bubble_area_2d_body_entered(_body: Node2D) -> void:
 
 
 func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
+	bubble_form = false
 	_handle_death()
 
 

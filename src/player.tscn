@@ -88,9 +88,6 @@ shape = SubResource("CapsuleShape2D_dftk0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qpkk0")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_speed = 2.0
-
 [node name="BubbleTimer" type="Timer" parent="."]
 one_shot = true
 

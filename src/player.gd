@@ -19,6 +19,7 @@ extends CharacterBody2D
 @export var bubble_gravity_scale := 0.2
 @export var bubble_duration := 2.0
 @export var bubble_charge_time := 0.6
+var can_move := true
 var can_jump := false
 var jump_pressed := false
 var bubble_form := false:
@@ -87,6 +88,8 @@ func _bubble_movement(delta: float) -> void:
 		return
 	_handle_horizontal_movement(bubble_speed, bubble_decelerate)
 	var direction_vert := Input.get_axis(&"up", &"down")
+	if not can_move:
+		direction_vert = 0.0
 	var gravity := get_gravity() * delta * bubble_gravity_scale
 	if direction_vert:
 		gravity *= direction_vert * bubble_vertical_speed
@@ -97,6 +100,8 @@ func _bubble_movement(delta: float) -> void:
 
 func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
 	var direction := Input.get_axis(&"left", &"right")
+	if not can_move:
+		direction = 0.0
 	if direction:
 		velocity.x = direction * speed
 	else:
@@ -113,7 +118,7 @@ func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
 
 
 func _handle_jump() -> bool:
-	if Input.is_action_pressed(&"jump") and jump_buffer_timer.is_stopped():
+	if Input.is_action_pressed(&"jump") and jump_buffer_timer.is_stopped() and can_move:
 		jump_pressed = true
 		jump_buffer_timer.start()
 	if Input.is_action_just_released(&"jump"):
@@ -135,7 +140,7 @@ func _handle_jump() -> bool:
 
 
 func _handle_death() -> void:
-	print("YOU DIED")
+	GameManager.restart_level()
 
 
 func _charge_bubble_form() -> void:

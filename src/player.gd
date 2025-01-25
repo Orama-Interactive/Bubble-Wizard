@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 300.0
+@export var horizontal_speed := 300.0
 @export_category("Jumping and Gravity")
 @export var jump_velocity := -100.0
 @export var coyote_seconds := 0.2
@@ -29,11 +29,13 @@ var bubble_form := false:
 			bubble_timer.start()
 var last_vertical_velocity := 0.0
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var bubble_timer: Timer = $BubbleTimer
 @onready var charge_bubble_timer: Timer = $ChargeBubbleTimer
 
 
 func _ready() -> void:
+	animated_sprite_2d.play(&"idle")
 	bubble_timer.wait_time = bubble_duration
 	charge_bubble_timer.wait_time = bubble_charge_time
 
@@ -59,11 +61,7 @@ func _normal_movement(delta: float) -> void:
 
 	_handle_jump()
 
-	var direction := Input.get_axis(&"left", &"right")
-	if direction:
-		velocity.x = direction * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+	var direction := _handle_horizontal_movement(horizontal_speed, horizontal_speed)
 	if not is_zero_approx(direction):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
@@ -77,12 +75,7 @@ func _bubble_movement(delta: float) -> void:
 	if _handle_jump():
 		bubble_form = false
 		return
-	var direction_horiz :=  Input.get_axis(&"left", &"right")
-	if direction_horiz:
-		velocity.x = direction_horiz * bubble_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, bubble_decelerate)
-
+	_handle_horizontal_movement(bubble_speed, bubble_decelerate)
 	var direction_vert := Input.get_axis(&"up", &"down")
 	var gravity := get_gravity() * delta * bubble_gravity_scale
 	if direction_vert:
@@ -90,6 +83,23 @@ func _bubble_movement(delta: float) -> void:
 	velocity += gravity
 	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
 	move_and_slide()
+
+
+func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
+	var direction := Input.get_axis(&"left", &"right")
+	if direction:
+		velocity.x = direction * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, deceleration)
+	if direction > 0:
+		animated_sprite_2d.scale.x = 1
+		animated_sprite_2d.play(&"walk")
+	elif direction < 0:
+		animated_sprite_2d.scale.x = -1
+		animated_sprite_2d.play(&"walk")
+	else:
+		animated_sprite_2d.play(&"idle")
+	return direction
 
 
 func _handle_jump() -> bool:

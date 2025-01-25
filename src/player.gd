@@ -11,7 +11,7 @@ extends CharacterBody2D
 ## Your player will move this amount faster when falling providing a less floaty jump curve.
 @export_range(0.5, 3) var descending_gravity_factor := 1.1
 @export var terminal_velocity := 1200.0
-@export var fall_damage_velocity := 700.0
+@export var fall_damage_velocity := 500.0
 @export_category("Bubble form")
 @export var bubble_speed := 120.0
 @export var bubble_vertical_speed := 1.0
@@ -29,6 +29,7 @@ var bubble_form := false:
 			can_jump = true
 			bubble_timer.start()
 var last_vertical_velocity := 0.0
+var just_jumped_off_bubble := false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var bubble_timer: Timer = $BubbleTimer
@@ -115,13 +116,20 @@ func _handle_jump() -> bool:
 	if Input.is_action_pressed(&"jump") and jump_buffer_timer.is_stopped():
 		jump_pressed = true
 		jump_buffer_timer.start()
-	if velocity.y < 0 and Input.is_action_just_released(&"jump"):
-		jump_pressed = false
-		can_jump = false
-		coyote_timer.stop()
-		jump_buffer_timer.stop()
+	if Input.is_action_just_released(&"jump"):
+		just_jumped_off_bubble = false
+		if velocity.y < 0:
+			jump_pressed = false
+			can_jump = false
+			coyote_timer.stop()
+			jump_buffer_timer.stop()
 	if jump_pressed and can_jump:
-		velocity.y = jump_velocity
+		var final_jump_velocity := jump_velocity
+		if bubble_form:
+			just_jumped_off_bubble = true
+		if just_jumped_off_bubble:
+			final_jump_velocity *= 2.0
+		velocity.y = final_jump_velocity
 		return true
 	return false
 

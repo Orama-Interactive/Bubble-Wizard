@@ -19,6 +19,7 @@ extends CharacterBody2D
 @export var bubble_gravity_scale := 0.2
 @export var bubble_duration := 2.0
 @export var bubble_charge_time := 0.6
+@export var bubble_terminal_velocity := 1200.0
 var can_move := true
 var can_jump := false
 var jump_pressed := false
@@ -105,7 +106,8 @@ func _bubble_movement(delta: float) -> void:
 	if direction_vert:
 		gravity *= direction_vert * bubble_vertical_speed
 	velocity += gravity
-	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
+	velocity.y = clampf(velocity.y, -bubble_terminal_velocity, bubble_terminal_velocity)
+	last_vertical_velocity = velocity.y
 	move_and_slide()
 
 

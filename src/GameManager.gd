@@ -2,7 +2,8 @@ extends Node
 
 var levels: Array[PackedScene] = [
 	preload("res://src/Levels/level_1.tscn"),
-	preload("res://src/Levels/level_2.tscn")
+	preload("res://src/Levels/level_2.tscn"),
+	preload("res://src/Levels/level_3.tscn"),
 ]
 
 var current_level_index := 0

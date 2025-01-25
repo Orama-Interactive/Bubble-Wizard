@@ -3,15 +3,15 @@ extends CharacterBody2D
 
 @export var horizontal_speed := 150.0
 @export_category("Jumping and Gravity")
-@export var jump_velocity := -150.0
+@export var jump_velocity := -100.0
 @export var coyote_seconds := 0.2
 @export var jump_buffer := 0.05
 ## The strength at which your character will be pulled to the ground.
-@export_range(0, 20) var gravity_scale := 1.4
+@export_range(0, 20) var gravity_scale := 0.6
 ## Your player will move this amount faster when falling providing a less floaty jump curve.
 @export_range(0.5, 3) var descending_gravity_factor := 1.1
-@export var terminal_velocity := 1200.0
-@export var fall_damage_velocity := 540.0
+@export var terminal_velocity := 300.0
+@export var fall_damage_velocity := 290.0
 @export_category("Bubble form")
 @export var bubble_speed := 120.0
 @export var bubble_vertical_speed := 1.0
@@ -19,7 +19,7 @@ extends CharacterBody2D
 @export var bubble_gravity_scale := 0.2
 @export var bubble_duration := 2.0
 @export var bubble_charge_time := 0.6
-@export var bubble_terminal_velocity := 1200.0
+@export var bubble_terminal_velocity := 300.0
 var can_move := true
 var can_jump := false
 var jump_pressed := false
@@ -80,7 +80,7 @@ func _normal_movement(delta: float) -> void:
 	if not is_zero_approx(velocity.y):
 		if velocity.y < 0 and velocity.y > -20:
 			animated_sprite_2d.play(&"jump_highest")
-		if velocity.y > 0:
+		if velocity.y > 0 and animated_sprite_2d.animation != &"fall":
 			animated_sprite_2d.play(&"fall")
 
 
@@ -90,6 +90,7 @@ func _normal_movement(delta: float) -> void:
 			charge_bubble_timer.stop()
 
 	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
+	print(velocity)
 	last_vertical_velocity = velocity.y
 	move_and_slide()
 

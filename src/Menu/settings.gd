@@ -1,6 +1,6 @@
 extends Panel
 
-@onready var languages: VBoxContainer = $MarginContainer/VBoxContainer/Languages
+@onready var languages: Container = $MarginContainer/VBoxContainer/Languages
 @onready var master_volume_slider: ValueSlider = %MasterVolumeSlider
 @onready var music_volume_slider: ValueSlider = %MusicVolumeSlider
 @onready var sounds_volume_slider: ValueSlider = %SoundsVolumeSlider

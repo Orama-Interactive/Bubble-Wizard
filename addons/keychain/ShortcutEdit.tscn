@@ -57,6 +57,7 @@ mouse_default_cursor_shape = 2
 text = "Delete"
 
 [node name="OpenProfileFolder" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -72,7 +73,6 @@ size = Vector2i(154, 116)
 item_count = 4
 item_0/text = "Key"
 item_0/icon = ExtResource("3")
-item_0/id = 0
 item_1/text = "Mouse Button"
 item_1/icon = ExtResource("5")
 item_1/id = 1

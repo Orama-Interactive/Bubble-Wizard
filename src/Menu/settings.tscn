@@ -31,12 +31,13 @@ layout_mode = 2
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Languages" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Languages"]
+[node name="LanguagesLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Language"
+
+[node name="Languages" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
 
 [node name="SettingsContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://cety31p4erlme"]
+[gd_scene load_steps=4 format=4 uid="uid://cety31p4erlme"]
 
 [ext_resource type="PackedScene" uid="uid://wjau22rv2yfi" path="res://src/player.tscn" id="1_7keft"]
 [ext_resource type="TileSet" uid="uid://cs2x6yrkunc0n" path="res://assets/tileset/tile_set.tres" id="2_88o3y"]
+[ext_resource type="PackedScene" uid="uid://d2au20kefpvwq" path="res://src/door.tscn" id="3_w2ltk"]
 
 [node name="Level2" type="Node2D"]
 
@@ -12,3 +13,6 @@ tile_set = ExtResource("2_88o3y")
 
 [node name="Player" parent="." instance=ExtResource("1_7keft")]
 position = Vector2(69, 256)
+
+[node name="Door" parent="." instance=ExtResource("3_w2ltk")]
+position = Vector2(1223, 319)

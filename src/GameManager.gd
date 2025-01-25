@@ -9,7 +9,7 @@ var current_level_index := 0
 
 
 func change_level() -> void:
-	if current_level_index < levels.size():
+	if current_level_index + 1 < levels.size():
 		current_level_index += 1
 		get_tree().change_scene_to_packed(levels[current_level_index])
 	else:

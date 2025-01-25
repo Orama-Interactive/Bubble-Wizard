@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var horizontal_speed := 220.0
+@export var horizontal_speed := 150.0
 @export_category("Jumping and Gravity")
 @export var jump_velocity := -100.0
 @export var coyote_seconds := 0.2

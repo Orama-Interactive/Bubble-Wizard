@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=24 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://bf820r0golprb" path="res://assets/player/idle/wizard_idle_0001.png" id="2_0itaa"]
+[ext_resource type="Texture2D" uid="uid://cy3tes3fbw3ue" path="res://assets/player/bubble.png" id="2_bytr8"]
 [ext_resource type="Texture2D" uid="uid://b4vf2yvc6q234" path="res://assets/player/fall/wizard_fall_0001.png" id="2_otldb"]
 [ext_resource type="Texture2D" uid="uid://d0753p5cpfk8j" path="res://assets/player/fall/wizard_fall_0002.png" id="3_annbp"]
 [ext_resource type="Texture2D" uid="uid://chnld4pvpimba" path="res://assets/player/idle/wizard_idle_0002.png" id="3_pgyyv"]
@@ -113,6 +114,11 @@ height = 16.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_r1i7a")
+
+[node name="BubbleSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, 2)
+texture = ExtResource("2_bytr8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -3)

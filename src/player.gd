@@ -25,6 +25,7 @@ var jump_pressed := false
 var bubble_form := false:
 	set(value):
 		bubble_form = value
+		bubble_sprite.visible = bubble_form
 		if bubble_form:
 			velocity.y = 0
 			can_jump = true
@@ -33,6 +34,7 @@ var last_vertical_velocity := 0.0
 var just_jumped_off_bubble := false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var bubble_sprite: Sprite2D = $BubbleSprite
 @onready var bubble_timer: Timer = $BubbleTimer
 @onready var charge_bubble_timer: Timer = $ChargeBubbleTimer
 @onready var coyote_timer: Timer = $CoyoteTimer

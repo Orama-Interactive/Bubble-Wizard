@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="GGJ_2025"
+config/name="Bubble Wizard"
+config/description="A game made for Global Game Jam 2025"
 run/main_scene="res://src/Menu/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"

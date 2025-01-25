@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=4 uid="uid://cety31p4erlme"]
+[gd_scene load_steps=5 format=4 uid="uid://cety31p4erlme"]
 
 [ext_resource type="PackedScene" uid="uid://wjau22rv2yfi" path="res://src/player.tscn" id="1_7keft"]
+[ext_resource type="Script" path="res://src/Levels/level_2.gd" id="1_aky12"]
 [ext_resource type="TileSet" uid="uid://cs2x6yrkunc0n" path="res://assets/tileset/tile_set.tres" id="2_88o3y"]
 [ext_resource type="PackedScene" uid="uid://d2au20kefpvwq" path="res://src/door.tscn" id="3_w2ltk"]
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_aky12")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(52, 30)
@@ -22,9 +24,9 @@ offset_left = 96.0
 offset_top = 209.0
 offset_right = 324.0
 offset_bottom = 232.0
-text = "Hold Q to charge your bubble"
+text = "Hold %s to charge your bubble"
 
-[node name="BubbleFormTutorialLabel2" type="Label" parent="."]
+[node name="FallDamageTutorialLabel" type="Label" parent="."]
 offset_left = 888.0
 offset_top = 163.0
 offset_right = 1116.0

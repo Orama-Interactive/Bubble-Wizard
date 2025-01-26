@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cety31p4erlme"]
+[gd_scene load_steps=6 format=4 uid="uid://cety31p4erlme"]
 
 [ext_resource type="PackedScene" uid="uid://wjau22rv2yfi" path="res://src/player.tscn" id="1_7keft"]
 [ext_resource type="Script" path="res://src/Levels/level_2.gd" id="1_aky12"]
 [ext_resource type="TileSet" uid="uid://cs2x6yrkunc0n" path="res://assets/tileset/tile_set.tres" id="2_88o3y"]
 [ext_resource type="PackedScene" uid="uid://d2au20kefpvwq" path="res://src/door.tscn" id="3_w2ltk"]
+[ext_resource type="PackedScene" uid="uid://bftkpvc737gwv" path="res://src/scene_transition_rect.tscn" id="5_ih2ny"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_aky12")
@@ -36,3 +37,5 @@ offset_top = 163.0
 offset_right = 1025.0
 offset_bottom = 186.0
 text = "Falling from a great height will kill you!"
+
+[node name="SceneTransitionRect" parent="." instance=ExtResource("5_ih2ny")]

@@ -51,6 +51,7 @@ mouse_default_cursor_shape = 2
 text = "Rename"
 
 [node name="DeleteProfile" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2

@@ -83,7 +83,6 @@ func _normal_movement(delta: float) -> void:
 		if velocity.y > 0 and animated_sprite_2d.animation != &"fall":
 			animated_sprite_2d.play(&"fall")
 
-
 	var direction := _handle_horizontal_movement(horizontal_speed, horizontal_speed)
 	if not is_zero_approx(direction):
 		if not charge_bubble_timer.is_stopped():

@@ -3,6 +3,7 @@ extends Node2D
 @onready var arrow_keys_tutorial_label: Label = $ArrowKeysTutorialLabel
 @onready var jump_tutorial_label: Label = $JumpTutorialLabel
 @onready var jump_tutorial_label2: Label = $JumpTutorialLabel2
+@onready var player: Player = $Player
 
 
 func _ready() -> void:
@@ -14,3 +15,4 @@ func _ready() -> void:
 	)
 	jump_tutorial_label.text = tr(jump_tutorial_label.text) % [jump_string]
 	jump_tutorial_label2.text = tr(jump_tutorial_label2.text) % [jump_string]
+	jump_tutorial_label2.visible = player.variable_height

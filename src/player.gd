@@ -106,6 +106,8 @@ func _normal_movement(delta: float) -> void:
 	if not is_zero_approx(direction):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
+			bubble_sprite_layer_3.play(&"idle")
+			bubble_sprite_layer_3.visible = false
 
 	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
 	last_vertical_velocity = velocity.y
@@ -190,9 +192,13 @@ func _handle_death() -> void:
 func _charge_bubble_form() -> void:
 	if Input.is_action_just_pressed("charge_bubble"):
 		charge_bubble_timer.start()
+		bubble_sprite_layer_3.visible = true
+		bubble_sprite_layer_3.play(&"charge")
 	if Input.is_action_just_released("charge_bubble"):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
+			bubble_sprite_layer_3.play(&"idle")
+			bubble_sprite_layer_3.visible = false
 
 
 func _on_bubble_timer_timeout() -> void:

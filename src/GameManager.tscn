@@ -8,10 +8,12 @@
 clip_count = 2
 clip_0/name = &"Menu"
 clip_0/stream = ExtResource("2_68fd3")
-clip_0/auto_advance = 0
+clip_0/auto_advance = 1
+clip_0/next_clip = 0
 clip_1/name = &"Game"
 clip_1/stream = ExtResource("3_26tri")
-clip_1/auto_advance = 0
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 1,

@@ -181,8 +181,10 @@ func _on_bubble_area_2d_body_entered(_body: Node2D) -> void:
 
 
 func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
-	bubble_form = false
-	_handle_death()
+	if bubble_form:
+		bubble_form = false
+	else:
+		_handle_death()
 
 
 func _on_powerup_area_2d_area_shape_entered(

@@ -1,12 +1,14 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://brfk3i8rajw3l"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://brfk3i8rajw3l"]
 
 [ext_resource type="Texture2D" uid="uid://vkq7e4x5if17" path="res://assets/ui/value_arrow_hover.svg" id="1_iu4th"]
 [ext_resource type="Texture2D" uid="uid://brxw6xbqj7h3n" path="res://assets/ui/value_arrow.svg" id="2_gdl56"]
 [ext_resource type="Texture2D" uid="uid://dsqgr74icf00r" path="res://assets/ui/value_arrow_press.svg" id="3_ttneg"]
 [ext_resource type="Texture2D" uid="uid://ctd4i13po5eca" path="res://assets/ui/ninepatchrect_full.png" id="4_eb6gk"]
 [ext_resource type="Texture2D" uid="uid://cx47xso0oo15u" path="res://assets/ui/ninepatchrect_empty.png" id="5_48srb"]
+[ext_resource type="FontFile" uid="uid://4c7458hch1f4" path="res://assets/font/PixeloidSans.ttf" id="6_1smpo"]
 
 [resource]
+default_font = ExtResource("6_1smpo")
 ValueSlider/base_type = &"TextureProgressBar"
 ValueSlider/colors/progress_color = Color(0.506096, 0.506096, 0.506096, 1)
 ValueSlider/colors/under_color = Color(0.360525, 0.360525, 0.360525, 1)

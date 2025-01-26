@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtrogemlc067t"]
+[gd_scene load_steps=4 format=3 uid="uid://dtrogemlc067t"]
 
+[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_1su7w"]
 [ext_resource type="PackedScene" uid="uid://bq7ibhm0txl5p" path="res://addons/keychain/ShortcutEdit.tscn" id="1_c7ft1"]
 [ext_resource type="Script" path="res://src/Menu/controls.gd" id="1_wfc1s"]
 
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1su7w")
 script = ExtResource("1_wfc1s")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://jd4r3in1a56h"]
+[gd_scene load_steps=7 format=4 uid="uid://jd4r3in1a56h"]
 
 [ext_resource type="Script" path="res://src/Levels/level_1.gd" id="1_5uigc"]
 [ext_resource type="PackedScene" uid="uid://wjau22rv2yfi" path="res://src/player.tscn" id="1_auxtx"]
 [ext_resource type="PackedScene" uid="uid://bftkpvc737gwv" path="res://src/scene_transition_rect.tscn" id="2_i501i"]
 [ext_resource type="TileSet" uid="uid://cs2x6yrkunc0n" path="res://assets/tileset/tile_set.tres" id="3_7sqww"]
 [ext_resource type="PackedScene" uid="uid://d2au20kefpvwq" path="res://src/door.tscn" id="3_f2eg1"]
+[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="5_m1g1x"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_5uigc")
@@ -27,6 +28,7 @@ position = Vector2(54, 80)
 offset_left = 94.0
 offset_right = 264.0
 offset_bottom = 23.0
+theme = ExtResource("5_m1g1x")
 text = "Move left with %s
 Move right with %s"
 
@@ -34,6 +36,7 @@ Move right with %s"
 offset_left = 487.0
 offset_right = 657.0
 offset_bottom = 23.0
+theme = ExtResource("5_m1g1x")
 text = "Jump with %s"
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource("2_i501i")]

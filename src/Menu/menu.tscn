@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmohlyknc57p4"]
+[gd_scene load_steps=3 format=3 uid="uid://bmohlyknc57p4"]
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_4gk1i"]
+[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_4mxjh"]
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -8,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4mxjh")
 script = ExtResource("1_4gk1i")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

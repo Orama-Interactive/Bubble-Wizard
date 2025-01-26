@@ -1,14 +1,66 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://brfk3i8rajw3l"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://brfk3i8rajw3l"]
 
 [ext_resource type="Texture2D" uid="uid://vkq7e4x5if17" path="res://assets/ui/value_arrow_hover.svg" id="1_iu4th"]
+[ext_resource type="Texture2D" uid="uid://dmw7d31rltb5d" path="res://assets/ui/button_normal.png" id="1_svvp0"]
 [ext_resource type="Texture2D" uid="uid://brxw6xbqj7h3n" path="res://assets/ui/value_arrow.svg" id="2_gdl56"]
 [ext_resource type="Texture2D" uid="uid://dsqgr74icf00r" path="res://assets/ui/value_arrow_press.svg" id="3_ttneg"]
 [ext_resource type="Texture2D" uid="uid://ctd4i13po5eca" path="res://assets/ui/ninepatchrect_full.png" id="4_eb6gk"]
 [ext_resource type="Texture2D" uid="uid://cx47xso0oo15u" path="res://assets/ui/ninepatchrect_empty.png" id="5_48srb"]
 [ext_resource type="FontFile" uid="uid://4c7458hch1f4" path="res://assets/font/PixeloidSans.ttf" id="6_1smpo"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7jwh0"]
+texture = ExtResource("1_svvp0")
+texture_margin_left = 6.0
+texture_margin_top = 2.0
+texture_margin_right = 6.0
+texture_margin_bottom = 4.0
+expand_margin_top = 3.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mi6u5"]
+texture = ExtResource("1_svvp0")
+texture_margin_left = 6.0
+texture_margin_top = 2.0
+texture_margin_right = 6.0
+texture_margin_bottom = 4.0
+expand_margin_top = 3.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f2nwm"]
+texture = ExtResource("1_svvp0")
+texture_margin_left = 6.0
+texture_margin_top = 2.0
+texture_margin_right = 6.0
+texture_margin_bottom = 4.0
+expand_margin_top = 3.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qdopd"]
+texture = ExtResource("1_svvp0")
+texture_margin_left = 6.0
+texture_margin_top = 2.0
+texture_margin_right = 6.0
+texture_margin_bottom = 4.0
+expand_margin_top = 3.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2q02i"]
+texture = ExtResource("1_svvp0")
+texture_margin_left = 6.0
+texture_margin_top = 2.0
+texture_margin_right = 6.0
+texture_margin_bottom = 4.0
+expand_margin_top = 3.0
+expand_margin_bottom = 5.0
+
 [resource]
 default_font = ExtResource("6_1smpo")
+Button/colors/font_color = Color(0.176471, 0.913725, 0.952941, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_7jwh0")
+Button/styles/focus = SubResource("StyleBoxTexture_mi6u5")
+Button/styles/hover = SubResource("StyleBoxTexture_f2nwm")
+Button/styles/normal = SubResource("StyleBoxTexture_qdopd")
+Button/styles/pressed = SubResource("StyleBoxTexture_2q02i")
 ValueSlider/base_type = &"TextureProgressBar"
 ValueSlider/colors/progress_color = Color(0.506096, 0.506096, 0.506096, 1)
 ValueSlider/colors/under_color = Color(0.360525, 0.360525, 0.360525, 1)

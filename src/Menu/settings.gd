@@ -1,5 +1,6 @@
 extends Panel
 
+@onready var variable_height_check_box: CheckBox = $MarginContainer/VBoxContainer/VariableHeightCheckBox
 @onready var languages: Container = $MarginContainer/VBoxContainer/Languages
 @onready var master_volume_slider: ValueSlider = %MasterVolumeSlider
 @onready var music_volume_slider: ValueSlider = %MusicVolumeSlider
@@ -7,6 +8,7 @@ extends Panel
 
 
 func _ready() -> void:
+	variable_height_check_box.button_pressed = GameManager.variable_height
 	var current_locale := TranslationServer.get_locale()
 	var loaded_locales := TranslationServer.get_loaded_locales()
 	var language_button_group := ButtonGroup.new()
@@ -51,3 +53,7 @@ func _on_controls_button_pressed() -> void:
 
 func _on_return_to_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/Menu/menu.tscn")
+
+
+func _on_variable_height_check_box_toggled(toggled_on: bool) -> void:
+	GameManager.variable_height = toggled_on

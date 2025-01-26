@@ -8,6 +8,7 @@ var levels: Array[PackedScene] = [
 ]
 
 var current_level_index := 0
+var variable_height := true
 
 
 func _ready() -> void:

@@ -20,7 +20,7 @@ extends CharacterBody2D
 @export var bubble_gravity_scale := 0.2
 @export var bubble_duration := 2.0
 @export var bubble_charge_time := 0.6
-@export var bubble_terminal_velocity := 260.0
+@export var bubble_terminal_velocity := 230.0
 @export var bubble_spawn_position_offset := 32
 var can_move := true
 var can_jump := false

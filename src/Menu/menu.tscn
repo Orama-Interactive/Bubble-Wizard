@@ -1,7 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmohlyknc57p4"]
+[gd_scene load_steps=9 format=3 uid="uid://bmohlyknc57p4"]
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_4gk1i"]
 [ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_4mxjh"]
+[ext_resource type="Texture2D" uid="uid://bf820r0golprb" path="res://assets/player/idle/wizard_idle_0001.png" id="3_xrl22"]
+[ext_resource type="Texture2D" uid="uid://chnld4pvpimba" path="res://assets/player/idle/wizard_idle_0002.png" id="4_u8gxg"]
+[ext_resource type="Texture2D" uid="uid://c6cd7n0xwhi8r" path="res://assets/player/idle/wizard_idle_0003.png" id="5_236ff"]
+[ext_resource type="Texture2D" uid="uid://lgkukth6qsqd" path="res://assets/player/idle/wizard_idle_0004.png" id="6_fqa8v"]
+[ext_resource type="Texture2D" uid="uid://3bkekl3uwot6" path="res://assets/player/idle/wizard_idle_0005.png" id="7_t3in0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scs61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xrl22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u8gxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_236ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fqa8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t3in0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Menu" type="Panel"]
 anchors_preset = 15
@@ -47,6 +75,10 @@ text = "Settings"
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit game"
+
+[node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(21, 247)
+sprite_frames = SubResource("SpriteFrames_scs61")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

@@ -153,6 +153,9 @@ shape = SubResource("CapsuleShape2D_qpkk0")
 [node name="BubbleTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="BubbleGravityTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="ChargeBubbleTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -171,6 +174,7 @@ autostart = true
 [connection signal="body_exited" from="SpikeArea2D" to="." method="_on_spike_area_2d_body_exited"]
 [connection signal="area_shape_entered" from="PowerupArea2D" to="." method="_on_powerup_area_2d_area_shape_entered"]
 [connection signal="timeout" from="BubbleTimer" to="." method="_on_bubble_timer_timeout"]
+[connection signal="timeout" from="BubbleGravityTimer" to="." method="_on_bubble_gravity_timer_timeout"]
 [connection signal="timeout" from="ChargeBubbleTimer" to="." method="_on_charge_bubble_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]

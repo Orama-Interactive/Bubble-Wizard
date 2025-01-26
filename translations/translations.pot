@@ -1,62 +1,86 @@
+# LANGUAGE translation for Bubble Wizard for the following files:
+# res://src/Menu/menu.tscn
+# res://src/Menu/settings.tscn
+# res://src/Menu/controls.tscn
+# res://src/Menu/menu.gd
+# res://src/Menu/settings.gd
+# res://src/Menu/controls.gd
+# res://src/Levels/level_1.tscn
+# res://src/Levels/level_2.tscn
+# res://src/Levels/level_3.tscn
+# res://src/Levels/level_4.tscn
+# res://src/GameManager.gd
+# res://src/Nodes/ValueSlider.gd
 #
-# FIRST AUTHOR < EMAIL @ADDRESS>, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GGJ_2025n"
+"Project-Id-Version: Bubble Wizard\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: src/Level.tscn
-msgid "Paused"
-msgstr ""
-
-#: src/Level.tscn
-msgid "Resume"
-msgstr ""
-
-#: src/Menu/settings.tscn
-msgid "Language"
-msgstr ""
-
-#: src/Menu/settings.gd
-#: src/Menu/settings.tscn
-msgid "Master volume:"
-msgstr ""
-
-#: src/Menu/settings.gd
-#: src/Menu/settings.tscn
-msgid "Music volume:"
-msgstr ""
-
-#: src/Menu/settings.gd
-#: src/Menu/settings.tscn
-msgid "Sounds volume:"
-msgstr ""
-
-#: src/Menu/settings.tscn
-msgid "Settings"
-msgstr ""
-
-#: src/Menu/settings.tscn
-msgid "English"
-msgstr ""
-
-#: src/Menu/settings.tscn
-msgid "Greek"
+#: src/Menu/menu.tscn
+msgid "Menu"
 msgstr ""
 
 #: src/Menu/menu.tscn
-msgid "Credits"
+msgid "Play"
+msgstr ""
+
+#: src/Menu/menu.tscn
+#: src/Menu/settings.tscn
+msgid "Settings"
 msgstr ""
 
 #: src/Menu/menu.tscn
 msgid "Exit game"
 msgstr ""
 
-#: src/Level.tscn
+#: src/Menu/settings.tscn
+msgid "Language"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Master volume:"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Music volume:"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Sounds volume:"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Controls"
+msgstr ""
+
 #: src/Menu/settings.tscn
 msgid "Return to menu"
+msgstr ""
+
+#: src/Menu/controls.tscn
+msgid "Return"
+msgstr ""
+
+#: src/Levels/level_1.tscn
+msgid ""
+"Move left with %s\n"
+"Move right with %s"
+msgstr ""
+
+#: src/Levels/level_1.tscn
+msgid "Jump with %s"
+msgstr ""
+
+#: src/Levels/level_2.tscn
+msgid "Hold %s to charge your bubble"
+msgstr ""
+
+#: src/Levels/level_2.tscn
+msgid "Falling from a great height will kill you!"
 msgstr ""

@@ -36,6 +36,14 @@ msgstr "Ένταση μουσικής:"
 msgid "Sounds volume:"
 msgstr "Ένταση ήχων:"
 
+#: src/Menu/menu.tscn
+msgid "Menu"
+msgstr "Μενού"
+
+#: src/Menu/menu.tscn
+msgid "Play"
+msgstr "Παίξε"
+
 #: src/Menu/settings.tscn
 msgid "Settings"
 msgstr "Ρυθμίσεις"
@@ -67,3 +75,23 @@ msgstr "Επιστροφή"
 #: src/Menu/settings.tscn
 msgid "Controls"
 msgstr "Κουμπιά"
+
+#: src/Levels/level_1.tscn
+msgid ""
+"Move left with %s\n"
+"Move right with %s"
+msgstr ""
+"Κινήσου αριστερά με %s\n"
+"Κινήσου δεξιά με %s"
+
+#: src/Levels/level_1.tscn
+msgid "Jump with %s"
+msgstr "Κάνε άλμα με %s"
+
+#: src/Levels/level_2.tscn
+msgid "Hold %s to charge your bubble"
+msgstr "Κράτα πατημένο το %s για να δημιουργήσεις τη φούσκα σου"
+
+#: src/Levels/level_2.tscn
+msgid "Falling from a great height will kill you!"
+msgstr "Η πτώση από μεγάλο ύψος θα σε σκοτώσει!"

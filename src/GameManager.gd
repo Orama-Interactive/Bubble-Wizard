@@ -10,6 +10,10 @@ var levels: Array[PackedScene] = [
 var current_level_index := 0
 
 
+func _ready() -> void:
+	TranslationServer.set_locale(OS.get_locale())
+
+
 func change_level() -> void:
 	if current_level_index + 1 < levels.size():
 		current_level_index += 1

@@ -24,15 +24,15 @@ position = Vector2(69, 256)
 position = Vector2(1732, 319)
 
 [node name="BubbleFormTutorialLabel" type="Label" parent="."]
-offset_left = 96.0
+offset_left = 26.0
 offset_top = 209.0
-offset_right = 324.0
+offset_right = 263.0
 offset_bottom = 232.0
 text = "Hold %s to charge your bubble"
 
 [node name="FallDamageTutorialLabel" type="Label" parent="."]
-offset_left = 888.0
+offset_left = 726.0
 offset_top = 163.0
-offset_right = 1116.0
+offset_right = 1025.0
 offset_bottom = 186.0
-text = "Be wary of fall damage!"
+text = "Falling from a great height will kill you!"

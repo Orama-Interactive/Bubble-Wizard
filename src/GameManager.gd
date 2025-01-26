@@ -31,10 +31,8 @@ func start_changing_level() -> void:
 	scene_transition_rect.animation_player.play(&"fade_in")
 
 
-
 func change_level() -> void:
-	if current_level_index + 1 < levels.size():
-		current_level_index += 1
+	if current_level_index < levels.size():
 		get_tree().change_scene_to_packed(levels[current_level_index])
 	else:
 		get_tree().change_scene_to_file("res://src/Menu/menu.tscn")

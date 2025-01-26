@@ -192,8 +192,8 @@ func _handle_jump() -> bool:
 
 func _handle_death() -> void:
 	can_move = false
-	await get_tree().create_timer(1.0).timeout
-	GameManager.restart_level()
+	animated_sprite_2d.visible = false
+	GameManager.start_changing_level()
 
 
 func _charge_bubble_form() -> void:

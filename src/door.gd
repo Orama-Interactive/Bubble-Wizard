@@ -9,4 +9,5 @@ func _on_body_shape_entered(
 	if body is Player:
 		animated_sprite_2d.play(&"default")
 		body.can_move = false
+		GameManager.current_level_index += 1
 		GameManager.start_changing_level()

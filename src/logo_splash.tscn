@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://74psqpyqubep"]
 
-[ext_resource type="Texture2D" uid="uid://b70jnavaogwna" path="res://assets/logo/orama_logo_handrawn.png" id="1_4dww5"]
 [ext_resource type="Script" path="res://src/logo_splash.gd" id="1_jpouf"]
 [ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_upbwy"]
+[ext_resource type="Texture2D" uid="uid://dpi7t4y2de2fp" path="res://assets/logo/orama_logo.svg" id="3_hrfuo"]
 
 [sub_resource type="Animation" id="Animation_p8fct"]
 length = 0.001
@@ -51,6 +51,15 @@ grow_vertical = 2
 theme = ExtResource("1_upbwy")
 script = ExtResource("1_jpouf")
 
+[node name="BlackBG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.552941, 0.607843, 0.721569, 1)
+
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -58,8 +67,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_4dww5")
+texture = ExtResource("3_hrfuo")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

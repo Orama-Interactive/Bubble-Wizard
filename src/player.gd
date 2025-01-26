@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var horizontal_speed := 150.0
 @export_category("Jumping and Gravity")
 @export var jump_velocity := -100.0
-@export var jump_velocity_no_variable_height_factor := 1.7
+@export var jump_velocity_no_variable_height_factor := 1.8
 @export var coyote_seconds := 0.2
 @export var jump_buffer := 0.05
 ## The strength at which your character will be pulled to the ground.

@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export_range(0.5, 3) var descending_gravity_factor := 1.1
 @export var terminal_velocity := 300.0
 @export var fall_damage_velocity := 290.0
+@export var variable_height := true
 @export_category("Bubble form")
 @export var bubble_speed := 120.0
 @export var bubble_vertical_speed := 1.0
@@ -19,7 +20,7 @@ extends CharacterBody2D
 @export var bubble_gravity_scale := 0.2
 @export var bubble_duration := 2.0
 @export var bubble_charge_time := 0.6
-@export var bubble_terminal_velocity := 300.0
+@export var bubble_terminal_velocity := 260.0
 var can_move := true
 var can_jump := false
 var jump_pressed := false
@@ -146,6 +147,8 @@ func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
 func _handle_jump() -> bool:
 	if Input.is_action_pressed(&"jump") and jump_buffer_timer.is_stopped() and can_move:
 		jump_pressed = true
+		if not variable_height:
+			can_jump = false
 		jump_buffer_timer.start()
 	if Input.is_action_just_released(&"jump"):
 		just_jumped_off_bubble = false

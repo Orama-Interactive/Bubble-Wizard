@@ -190,7 +190,7 @@ func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
 		_handle_death()
 
 
-func _on_spike_area_2d_body_exited(body: Node2D) -> void:
+func _on_spike_area_2d_body_exited(_body: Node2D) -> void:
 	touching_spike = false
 
 

@@ -33,6 +33,7 @@ var bubble_form := false:
 			bubble_timer.start()
 var last_vertical_velocity := 0.0
 var just_jumped_off_bubble := false
+var touching_spike := false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var bubble_sprite: Sprite2D = $BubbleSprite
@@ -181,10 +182,16 @@ func _on_bubble_area_2d_body_entered(_body: Node2D) -> void:
 
 
 func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
+	touching_spike = true
 	if bubble_form:
 		bubble_form = false
+		$SpikeTimer.start()
 	else:
 		_handle_death()
+
+
+func _on_spike_area_2d_body_exited(body: Node2D) -> void:
+	touching_spike = false
 
 
 func _on_powerup_area_2d_area_shape_entered(
@@ -201,3 +208,8 @@ func _on_coyote_timer_timeout() -> void:
 
 func _on_jump_buffer_timer_timeout() -> void:
 	jump_pressed = false
+
+
+func _on_spike_timer_timeout() -> void:
+	if touching_spike and not bubble_form:
+		_handle_death()

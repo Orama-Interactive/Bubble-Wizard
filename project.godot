@@ -20,7 +20,7 @@ config/icon="res://assets/player/idle/wizard_idle_0001.png"
 [autoload]
 
 Keychain="*res://addons/keychain/Keychain.gd"
-GameManager="*res://src/GameManager.gd"
+GameManager="*res://src/GameManager.tscn"
 
 [display]
 

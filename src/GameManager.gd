@@ -10,6 +10,8 @@ var levels: Array[PackedScene] = [
 var current_level_index := 0
 var variable_height := true
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 func _ready() -> void:
 	TranslationServer.set_locale(OS.get_locale())

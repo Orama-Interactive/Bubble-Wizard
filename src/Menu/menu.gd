@@ -8,6 +8,8 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
+	var music_stream := (GameManager.audio_stream_player.get_stream_playback() as AudioStreamPlaybackInteractive)
+	music_stream.switch_to_clip_by_name(&"Game")
 	get_tree().change_scene_to_file("res://src/Levels/level_1.tscn")
 
 

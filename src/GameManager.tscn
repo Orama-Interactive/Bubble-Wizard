@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://boclccdyttf74"]
+
+[ext_resource type="Script" path="res://src/GameManager.gd" id="1_5nobd"]
+[ext_resource type="AudioStream" uid="uid://b4ahcam5ci4d6" path="res://assets/audio/music/8bit_team_2_125.wav" id="2_68fd3"]
+[ext_resource type="AudioStream" uid="uid://c63akuntfo580" path="res://assets/audio/music/8bit_team_2_140.wav" id="3_26tri"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ihc7d"]
+clip_count = 2
+clip_0/name = &"Menu"
+clip_0/stream = ExtResource("2_68fd3")
+clip_0/auto_advance = 0
+clip_1/name = &"Game"
+clip_1/stream = ExtResource("3_26tri")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(-1, 0): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(-1, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+}
+}
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_5nobd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_ihc7d")
+autoplay = true

@@ -53,7 +53,7 @@ offset_right = 836.0
 offset_bottom = 236.0
 theme = ExtResource("5_t54hx")
 text = "Falling from a great height
- without a bubble will kill you!"
+without a bubble will kill you!"
 label_settings = SubResource("LabelSettings_nw1sg")
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource("5_ih2ny")]

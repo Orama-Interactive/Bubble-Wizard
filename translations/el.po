@@ -88,10 +88,24 @@ msgstr ""
 msgid "Jump with %s"
 msgstr "Κάνε άλμα με %s"
 
-#: src/Levels/level_2.tscn
-msgid "Hold %s to charge your bubble"
-msgstr "Κράτα πατημένο το %s για να δημιουργήσεις τη φούσκα σου"
+#: src/Levels/level_1.tscn
+msgid "Hold %s to make bigger jumps"
+msgstr "Κράτα πατημένο το %s για μεγαλύτερα άλματα"
 
 #: src/Levels/level_2.tscn
-msgid "Falling from a great height will kill you!"
-msgstr "Η πτώση από μεγάλο ύψος θα σε σκοτώσει!"
+msgid ""
+"Hold %s to cast a bubble and\n"
+"use the %s %s %s %s keys to\n"
+"move over big gaps"
+msgstr ""
+"Κράτα πατημένο το %s για να δημιουργήσεις φούσκα\n"
+"και χρησιμοποίησε τα %s %s %s %s πλήκτρα για\n"
+"να περάσεις μεγάλα κενά"
+
+#: src/Levels/level_2.tscn
+msgid ""
+"Falling from a great height\n"
+"without a bubble will kill you!"
+msgstr ""
+"Η πτώση από μεγάλο ύψος\n"
+"χωρίς φούσκα θα σε σκοτώσει!"

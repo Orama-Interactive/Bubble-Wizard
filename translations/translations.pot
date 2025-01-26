@@ -77,10 +77,19 @@ msgstr ""
 msgid "Jump with %s"
 msgstr ""
 
-#: src/Levels/level_2.tscn
-msgid "Hold %s to charge your bubble"
+#: src/Levels/level_1.tscn
+msgid "Hold %s to make bigger jumps"
 msgstr ""
 
 #: src/Levels/level_2.tscn
-msgid "Falling from a great height will kill you!"
+msgid ""
+"Hold %s to cast a bubble and\n"
+"use the %s %s %s %s keys to\n"
+"move over big gaps"
+msgstr ""
+
+#: src/Levels/level_2.tscn
+msgid ""
+"Falling from a great height\n"
+"without a bubble will kill you!"
 msgstr ""

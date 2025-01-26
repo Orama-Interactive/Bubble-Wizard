@@ -21,6 +21,7 @@ extends CharacterBody2D
 @export var bubble_duration := 2.0
 @export var bubble_charge_time := 0.6
 @export var bubble_terminal_velocity := 260.0
+@export var bubble_spawn_position_offset := 32
 var can_move := true
 var can_jump := false
 var jump_pressed := false
@@ -35,6 +36,7 @@ var bubble_form := false:
 			bubble_timer.start()
 			bubble_gravity_timer.start()
 			bubble_about_to_burst_timer.start()
+			bubble_sprite_layer_3.position.y = 4
 			for child: AnimatedSprite2D in bubble_sprites.get_children():
 				child.visible = true
 				child.play(&"idle")
@@ -153,7 +155,7 @@ func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
 		if is_zero_approx(velocity.y):
 			animated_sprite_2d.play(&"walk")
 	else:
-		if is_zero_approx(velocity.y):
+		if is_zero_approx(velocity.y) and charge_bubble_timer.is_stopped():
 			animated_sprite_2d.play(&"idle")
 	return direction
 
@@ -193,7 +195,9 @@ func _charge_bubble_form() -> void:
 	if Input.is_action_just_pressed("charge_bubble"):
 		charge_bubble_timer.start()
 		bubble_sprite_layer_3.visible = true
+		bubble_sprite_layer_3.position.y -= bubble_spawn_position_offset
 		bubble_sprite_layer_3.play(&"charge")
+		animated_sprite_2d.play(&"charge")
 	if Input.is_action_just_released("charge_bubble"):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
@@ -207,7 +211,7 @@ func _on_bubble_timer_timeout() -> void:
 
 func _on_charge_bubble_timer_timeout() -> void:
 	bubble_form = true
-	position.y -= 32
+	position.y -= bubble_spawn_position_offset
 
 
 func _on_bubble_area_2d_body_entered(_body: Node2D) -> void:

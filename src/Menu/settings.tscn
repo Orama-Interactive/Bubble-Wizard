@@ -36,6 +36,7 @@ layout_mode = 2
 columns = 2
 
 [node name="SettingsContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 columns = 2
 

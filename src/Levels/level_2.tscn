@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cety31p4erlme"]
+[gd_scene load_steps=9 format=4 uid="uid://cety31p4erlme"]
 
 [ext_resource type="PackedScene" uid="uid://wjau22rv2yfi" path="res://src/player.tscn" id="1_7keft"]
 [ext_resource type="Script" path="res://src/Levels/level_2.gd" id="1_aky12"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://d2au20kefpvwq" path="res://src/door.tscn" id="3_w2ltk"]
 [ext_resource type="PackedScene" uid="uid://bftkpvc737gwv" path="res://src/scene_transition_rect.tscn" id="5_ih2ny"]
 [ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="5_t54hx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sxjq7"]
+font_size = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_nw1sg"]
+font_size = 9
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_aky12")
@@ -30,20 +36,25 @@ position = Vector2(69, 256)
 position = Vector2(1732, 334)
 
 [node name="BubbleFormTutorialLabel" type="Label" parent="."]
-offset_left = 26.0
-offset_top = 209.0
-offset_right = 263.0
-offset_bottom = 232.0
+offset_left = 129.0
+offset_top = 215.0
+offset_right = 366.0
+offset_bottom = 254.0
 theme = ExtResource("5_t54hx")
-text = "Hold %s to charge your bubble"
+text = "Hold %s to cast a bubble and
+use the %s %s %s %s keys to
+move over big gaps"
+label_settings = SubResource("LabelSettings_sxjq7")
 
 [node name="FallDamageTutorialLabel" type="Label" parent="."]
-offset_left = 726.0
-offset_top = 176.0
-offset_right = 1025.0
-offset_bottom = 199.0
+offset_left = 537.0
+offset_top = 213.0
+offset_right = 836.0
+offset_bottom = 236.0
 theme = ExtResource("5_t54hx")
-text = "Falling from a great height will kill you!"
+text = "Falling from a great height
+ without a bubble will kill you!"
+label_settings = SubResource("LabelSettings_nw1sg")
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource("5_ih2ny")]
 visible = false

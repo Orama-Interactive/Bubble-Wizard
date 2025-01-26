@@ -101,15 +101,15 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iptom"]
 radius = 8.0
-height = 18.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dftk0"]
 radius = 5.0
-height = 18.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpkk0"]
 radius = 4.0
-height = 16.0
+height = 18.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7

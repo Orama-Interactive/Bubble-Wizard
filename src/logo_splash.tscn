@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://74psqpyqubep"]
+[gd_scene load_steps=9 format=3 uid="uid://74psqpyqubep"]
 
 [ext_resource type="Script" path="res://src/logo_splash.gd" id="1_jpouf"]
 [ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_upbwy"]
 [ext_resource type="Texture2D" uid="uid://dpi7t4y2de2fp" path="res://assets/logo/orama_logo.svg" id="3_hrfuo"]
 [ext_resource type="Texture2D" uid="uid://d30cxqoyfyrc4" path="res://assets/logo/Bubble_Wizard_Logo-1_1.png" id="4_rnset"]
+[ext_resource type="AudioStream" uid="uid://nuuy0r0l0flu" path="res://assets/audio/sounds/intro_opening.wav" id="5_2ngbt"]
 
 [sub_resource type="Animation" id="Animation_p8fct"]
 length = 0.001
@@ -108,5 +109,9 @@ grow_vertical = 2
 libraries = {
 "": SubResource("AnimationLibrary_u6sh0")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2ngbt")
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

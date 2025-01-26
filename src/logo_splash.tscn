@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://74psqpyqubep"]
+[gd_scene load_steps=8 format=3 uid="uid://74psqpyqubep"]
 
 [ext_resource type="Script" path="res://src/logo_splash.gd" id="1_jpouf"]
 [ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_upbwy"]
 [ext_resource type="Texture2D" uid="uid://dpi7t4y2de2fp" path="res://assets/logo/orama_logo.svg" id="3_hrfuo"]
+[ext_resource type="Texture2D" uid="uid://d30cxqoyfyrc4" path="res://assets/logo/Bubble_Wizard_Logo-1_1.png" id="4_rnset"]
 
 [sub_resource type="Animation" id="Animation_p8fct"]
 length = 0.001
@@ -18,10 +19,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_hrfuo")]
+}
 
 [sub_resource type="Animation" id="Animation_3teiy"]
 resource_name = "splash"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,10 +42,22 @@ tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2.06667, 3.1, 4.1, 5.06667, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_hrfuo"), ExtResource("4_rnset")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u6sh0"]

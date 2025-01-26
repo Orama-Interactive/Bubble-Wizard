@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5qx5fgnorbtr"]
 
 [ext_resource type="Script" path="res://src/Nodes/ValueSlider.gd" id="1_3yvg7"]
-[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/main_theme.tres" id="1_tmhy1"]
+[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_tmhy1"]
 [ext_resource type="Script" path="res://src/Menu/settings.gd" id="2_8ap4q"]
 
 [node name="Settings" type="Panel"]

@@ -192,6 +192,7 @@ func _handle_jump() -> bool:
 
 func _handle_death() -> void:
 	can_move = false
+	await get_tree().create_timer(1.0).timeout
 	GameManager.restart_level()
 
 
@@ -228,8 +229,8 @@ func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
 		bubble_form = false
 		$SpikeTimer.start()
 	else:
-		_handle_death()
 		$Audios/DeathSpikes.play()
+		_handle_death()
 
 
 func _on_spike_area_2d_body_exited(_body: Node2D) -> void:

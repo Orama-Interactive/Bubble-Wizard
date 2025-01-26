@@ -20,8 +20,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 160
-theme_override_constants/margin_right = 160
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_right = 120
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -40,7 +40,6 @@ layout_mode = 2
 columns = 2
 
 [node name="SettingsContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 columns = 2
 
@@ -107,14 +106,16 @@ script = ExtResource("1_3yvg7")
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 12
 
 [node name="ControlsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_type_variation = &"FirstButton"
+theme_type_variation = &"UnchainedButton"
 text = "Controls"
 
 [node name="ReturnToMenuButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"UnchainedButton"
 text = "Return to menu"
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/VariableHeightCheckBox" to="." method="_on_variable_height_check_box_toggled"]

@@ -38,3 +38,4 @@ script = ExtResource("1_5nobd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_ihc7d")
+bus = &"Music"

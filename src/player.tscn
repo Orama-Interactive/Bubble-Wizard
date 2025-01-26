@@ -349,9 +349,11 @@ autostart = true
 
 [node name="BubblePop" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("47_n27jn")
+bus = &"Sounds"
 
 [node name="DeathSpikes" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("48_usckj")
+bus = &"Sounds"
 
 [connection signal="animation_finished" from="BubbleSprites/BubbleSpriteLayer3" to="." method="_on_bubble_sprite_layer_3_animation_finished"]
 [connection signal="body_entered" from="BubbleArea2D" to="." method="_on_bubble_area_2d_body_entered"]

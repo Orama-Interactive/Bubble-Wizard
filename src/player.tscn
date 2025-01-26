@@ -1,24 +1,29 @@
-[gd_scene load_steps=33 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=38 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://bf820r0golprb" path="res://assets/player/idle/wizard_idle_0001.png" id="2_0itaa"]
-[ext_resource type="Texture2D" uid="uid://bp4ll08ufmpss" path="res://assets/player/bubble(outline) _0001.png" id="2_icib8"]
+[ext_resource type="Texture2D" uid="uid://bp4ll08ufmpss" path="res://assets/player/bubble/bubble(outline) _0001.png" id="2_icib8"]
 [ext_resource type="Texture2D" uid="uid://b4vf2yvc6q234" path="res://assets/player/fall/wizard_fall_0001.png" id="2_otldb"]
 [ext_resource type="Texture2D" uid="uid://d0753p5cpfk8j" path="res://assets/player/fall/wizard_fall_0002.png" id="3_annbp"]
-[ext_resource type="Texture2D" uid="uid://beh7cm8gv6ud" path="res://assets/player/bubble(outline) _0002.png" id="3_nagnk"]
+[ext_resource type="Texture2D" uid="uid://beh7cm8gv6ud" path="res://assets/player/bubble/bubble(outline) _0002.png" id="3_nagnk"]
 [ext_resource type="Texture2D" uid="uid://chnld4pvpimba" path="res://assets/player/idle/wizard_idle_0002.png" id="3_pgyyv"]
 [ext_resource type="Texture2D" uid="uid://c6cd7n0xwhi8r" path="res://assets/player/idle/wizard_idle_0003.png" id="4_6xner"]
 [ext_resource type="Texture2D" uid="uid://dmuikfr7ag6nv" path="res://assets/player/fall/wizard_fall_0003.png" id="4_jfjhv"]
-[ext_resource type="Texture2D" uid="uid://b6cts8ibo7dyi" path="res://assets/player/bubble(outline) _0003.png" id="4_nbd3g"]
+[ext_resource type="Texture2D" uid="uid://b6cts8ibo7dyi" path="res://assets/player/bubble/bubble(outline) _0003.png" id="4_nbd3g"]
 [ext_resource type="Texture2D" uid="uid://lgkukth6qsqd" path="res://assets/player/idle/wizard_idle_0004.png" id="5_e2ua5"]
-[ext_resource type="Texture2D" uid="uid://cjnawa8ae78g1" path="res://assets/player/bubble(bottom) _0001.png" id="5_jea7p"]
-[ext_resource type="Texture2D" uid="uid://dt5dfbgi26exc" path="res://assets/player/bubble(bottom) _0002.png" id="6_ugvut"]
+[ext_resource type="Texture2D" uid="uid://cjnawa8ae78g1" path="res://assets/player/bubble/bubble(bottom) _0001.png" id="5_jea7p"]
+[ext_resource type="Texture2D" uid="uid://dsol1uoitufmm" path="res://assets/player/bubble/bubble_pop_0001.png" id="5_wrnxe"]
+[ext_resource type="Texture2D" uid="uid://epnk34ihfp2" path="res://assets/player/bubble/bubble_pop_0002.png" id="6_deehl"]
+[ext_resource type="Texture2D" uid="uid://dt5dfbgi26exc" path="res://assets/player/bubble/bubble(bottom) _0002.png" id="6_ugvut"]
 [ext_resource type="Texture2D" uid="uid://3bkekl3uwot6" path="res://assets/player/idle/wizard_idle_0005.png" id="6_wuf03"]
-[ext_resource type="Texture2D" uid="uid://b6b35d7laxka3" path="res://assets/player/bubble(bottom) _0003.png" id="7_vd0yi"]
+[ext_resource type="Texture2D" uid="uid://dksewdbdqhkoe" path="res://assets/player/bubble/bubble_pop_0003.png" id="7_2n0u0"]
+[ext_resource type="Texture2D" uid="uid://b6b35d7laxka3" path="res://assets/player/bubble/bubble(bottom) _0003.png" id="7_vd0yi"]
 [ext_resource type="Texture2D" uid="uid://t6dxnf1yshh7" path="res://assets/player/walking/wizard_walking_0001.png" id="7_ymq4f"]
 [ext_resource type="Shader" path="res://src/Shaders/Overlay.gdshader" id="8_7ui4k"]
 [ext_resource type="Texture2D" uid="uid://c0ft3l3ihp00u" path="res://assets/player/walking/wizard_walking_0002.png" id="8_flxob"]
+[ext_resource type="Texture2D" uid="uid://txpiy51mmu3v" path="res://assets/player/bubble/bubble_pop_0004.png" id="8_k8d2a"]
 [ext_resource type="Texture2D" uid="uid://bvtsxfpywma1s" path="res://assets/player/walking/wizard_walking_0003.png" id="9_1v0l3"]
+[ext_resource type="Texture2D" uid="uid://cfgk3mcdof48y" path="res://assets/player/bubble/bubble_pop_0005.png" id="9_hs4hm"]
 [ext_resource type="Texture2D" uid="uid://bvsq6d8pmo3f8" path="res://assets/player/walking/wizard_walking_0004.png" id="10_doumy"]
 [ext_resource type="Texture2D" uid="uid://cmhh01ae40co1" path="res://assets/player/jumphighest/wizard_jumphighest_0001.png" id="10_podvu"]
 [ext_resource type="Texture2D" uid="uid://bhvggxeh5wiof" path="res://assets/player/jumphighest/wizard_jumphighest_0002.png" id="11_6g7bq"]
@@ -46,6 +51,26 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wrnxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_deehl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2n0u0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k8d2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hs4hm")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 6.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wea1p"]
@@ -170,18 +195,21 @@ script = ExtResource("1_r1i7a")
 
 [node name="BubbleSprites" type="Node2D" parent="."]
 
-[node name="Layer3" type="AnimatedSprite2D" parent="BubbleSprites"]
+[node name="BubbleSpriteLayer3" type="AnimatedSprite2D" parent="BubbleSprites"]
+visible = false
 position = Vector2(1, 4)
 sprite_frames = SubResource("SpriteFrames_u717o")
-animation = &"critical"
+animation = &"pop"
 
 [node name="Layer2" type="AnimatedSprite2D" parent="BubbleSprites"]
+visible = false
 modulate = Color(1, 1, 1, 0.498039)
 position = Vector2(1, 4)
 sprite_frames = SubResource("SpriteFrames_wea1p")
 animation = &"critical"
 
 [node name="Layer1" type="AnimatedSprite2D" parent="BubbleSprites"]
+visible = false
 material = SubResource("ShaderMaterial_7qlrm")
 position = Vector2(1, 4)
 sprite_frames = SubResource("SpriteFrames_wea1p")
@@ -239,6 +267,7 @@ one_shot = true
 wait_time = 0.1
 autostart = true
 
+[connection signal="animation_finished" from="BubbleSprites/BubbleSpriteLayer3" to="." method="_on_bubble_sprite_layer_3_animation_finished"]
 [connection signal="body_entered" from="BubbleArea2D" to="." method="_on_bubble_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeArea2D" to="." method="_on_spike_area_2d_body_entered"]
 [connection signal="body_exited" from="SpikeArea2D" to="." method="_on_spike_area_2d_body_exited"]

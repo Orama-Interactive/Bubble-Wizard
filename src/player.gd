@@ -29,7 +29,6 @@ var bubble_form := false:
 	set(value):
 		bubble_form = value
 		animated_sprite_2d.visible = not bubble_form
-		bubble_sprites.visible = bubble_form
 		if bubble_form:
 			velocity.y = 0
 			can_jump = true
@@ -38,7 +37,13 @@ var bubble_form := false:
 			bubble_gravity_timer.start()
 			bubble_about_to_burst_timer.start()
 			for child: AnimatedSprite2D in bubble_sprites.get_children():
+				child.visible = true
 				child.play(&"idle")
+		else:
+			bubble_about_to_burst_timer.stop()
+			bubble_sprite_layer_3.play(&"pop")
+			$BubbleSprites/Layer2.visible = false
+			$BubbleSprites/Layer1.visible = false
 var last_vertical_velocity := 0.0
 var just_jumped_off_bubble := false
 var should_bubble_fall := false
@@ -46,6 +51,7 @@ var touching_spike := false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var bubble_sprites: Node2D = $BubbleSprites
+@onready var bubble_sprite_layer_3: AnimatedSprite2D = $BubbleSprites/BubbleSpriteLayer3
 @onready var bubble_timer: Timer = $BubbleTimer
 @onready var bubble_gravity_timer: Timer = $BubbleGravityTimer
 @onready var bubble_about_to_burst_timer: Timer = $BubbleAboutToBurstTimer
@@ -242,5 +248,11 @@ func _on_bubble_gravity_timer_timeout() -> void:
 
 
 func _on_bubble_about_to_burst_timer_timeout() -> void:
-	for child: AnimatedSprite2D in bubble_sprites.get_children():
-		child.play(&"critical")
+	if bubble_form:
+		for child: AnimatedSprite2D in bubble_sprites.get_children():
+			child.play(&"critical")
+
+
+func _on_bubble_sprite_layer_3_animation_finished() -> void:
+	if bubble_sprite_layer_3.animation == &"pop":
+		bubble_sprite_layer_3.visible = false

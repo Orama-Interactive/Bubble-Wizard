@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6cts8ibo7dyi"
-path="res://.godot/imported/bubble(outline) _0003.png-28fe5f6c18e71b9050f2c797c68d5d4c.ctex"
+uid="uid://dksewdbdqhkoe"
+path="res://.godot/imported/bubble_pop_0003.png-263707b706770884ef3efbb4786b9dab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/bubble(outline) _0003.png"
-dest_files=["res://.godot/imported/bubble(outline) _0003.png-28fe5f6c18e71b9050f2c797c68d5d4c.ctex"]
+source_file="res://assets/player/bubble/bubble_pop_0003.png"
+dest_files=["res://.godot/imported/bubble_pop_0003.png-263707b706770884ef3efbb4786b9dab.ctex"]
 
 [params]
 

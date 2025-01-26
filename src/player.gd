@@ -27,6 +27,8 @@ var can_jump := false
 var jump_pressed := false
 var bubble_form := false:
 	set(value):
+		if bubble_form == value:
+			return
 		bubble_form = value
 		animated_sprite_2d.visible = not bubble_form
 		if bubble_form:
@@ -43,6 +45,7 @@ var bubble_form := false:
 		else:
 			bubble_about_to_burst_timer.stop()
 			bubble_sprite_layer_3.play(&"pop")
+			$Audios/BubblePop.play()
 			$BubbleSprites/Layer2.visible = false
 			$BubbleSprites/Layer1.visible = false
 var last_vertical_velocity := 0.0
@@ -188,6 +191,7 @@ func _handle_jump() -> bool:
 
 
 func _handle_death() -> void:
+	can_move = false
 	GameManager.restart_level()
 
 
@@ -225,6 +229,7 @@ func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
 		$SpikeTimer.start()
 	else:
 		_handle_death()
+		$Audios/DeathSpikes.play()
 
 
 func _on_spike_area_2d_body_exited(_body: Node2D) -> void:

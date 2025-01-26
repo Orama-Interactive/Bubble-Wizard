@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=56 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://bf820r0golprb" path="res://assets/player/idle/wizard_idle_0001.png" id="2_0itaa"]
@@ -46,6 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://dnytglhftiqm6" path="res://assets/player/casting/wizard_casting_0006.png" id="27_b7v5f"]
 [ext_resource type="Texture2D" uid="uid://duto14q5y6pmd" path="res://assets/player/casting/wizard_casting_0007.png" id="28_jchja"]
 [ext_resource type="Texture2D" uid="uid://qtkohuqdc721" path="res://assets/player/casting/wizard_casting_0008.png" id="29_yabs3"]
+[ext_resource type="AudioStream" uid="uid://ddvupf1tl4wk5" path="res://assets/audio/sounds/bubble_pop.wav" id="47_n27jn"]
+[ext_resource type="AudioStream" uid="uid://dnrs3ucf1cw7l" path="res://assets/audio/sounds/death_spikes.wav" id="48_usckj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u717o"]
 animations = [{
@@ -340,6 +342,16 @@ one_shot = true
 [node name="SpikeTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Audios" type="Node" parent="."]
+
+[node name="BubblePop" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("47_n27jn")
+
+[node name="DeathSpikes" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("48_usckj")
 
 [connection signal="animation_finished" from="BubbleSprites/BubbleSpriteLayer3" to="." method="_on_bubble_sprite_layer_3_animation_finished"]
 [connection signal="body_entered" from="BubbleArea2D" to="." method="_on_bubble_area_2d_body_entered"]

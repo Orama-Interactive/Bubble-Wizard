@@ -31,12 +31,15 @@ msgid "Play"
 msgstr ""
 
 #: src/Menu/menu.tscn
-#: src/Menu/settings.tscn
 msgid "Settings"
 msgstr ""
 
 #: src/Menu/menu.tscn
 msgid "Exit game"
+msgstr ""
+
+#: src/Menu/settings.tscn
+msgid "Variable height"
 msgstr ""
 
 #: src/Menu/settings.tscn

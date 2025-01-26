@@ -65,6 +65,10 @@ msgid "Exit game"
 msgstr "Έξοδος"
 
 #: src/Menu/settings.tscn
+msgid "Variable height"
+msgstr "Μεταβλητό ύψος"
+
+#: src/Menu/settings.tscn
 msgid "Return to menu"
 msgstr "Πίσω στο μενού"
 

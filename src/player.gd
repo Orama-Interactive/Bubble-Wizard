@@ -28,22 +28,27 @@ var jump_pressed := false
 var bubble_form := false:
 	set(value):
 		bubble_form = value
-		bubble_sprite.visible = bubble_form
+		animated_sprite_2d.visible = not bubble_form
+		bubble_sprites.visible = bubble_form
 		if bubble_form:
 			velocity.y = 0
 			can_jump = true
 			should_bubble_fall = false
 			bubble_timer.start()
 			bubble_gravity_timer.start()
+			bubble_about_to_burst_timer.start()
+			for child: AnimatedSprite2D in bubble_sprites.get_children():
+				child.play(&"idle")
 var last_vertical_velocity := 0.0
 var just_jumped_off_bubble := false
 var should_bubble_fall := false
 var touching_spike := false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var bubble_sprite: Sprite2D = $BubbleSprite
+@onready var bubble_sprites: Node2D = $BubbleSprites
 @onready var bubble_timer: Timer = $BubbleTimer
 @onready var bubble_gravity_timer: Timer = $BubbleGravityTimer
+@onready var bubble_about_to_burst_timer: Timer = $BubbleAboutToBurstTimer
 @onready var charge_bubble_timer: Timer = $ChargeBubbleTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
@@ -53,6 +58,7 @@ func _ready() -> void:
 	animated_sprite_2d.play(&"idle")
 	bubble_timer.wait_time = bubble_duration
 	bubble_gravity_timer.wait_time = bubble_duration / 3.0
+	bubble_about_to_burst_timer.wait_time = bubble_duration - bubble_duration / 3.0
 	charge_bubble_timer.wait_time = bubble_charge_time
 	coyote_timer.wait_time = coyote_seconds
 	jump_buffer_timer.wait_time = jump_buffer
@@ -233,3 +239,8 @@ func _on_spike_timer_timeout() -> void:
 
 func _on_bubble_gravity_timer_timeout() -> void:
 	should_bubble_fall = true
+
+
+func _on_bubble_about_to_burst_timer_timeout() -> void:
+	for child: AnimatedSprite2D in bubble_sprites.get_children():
+		child.play(&"critical")

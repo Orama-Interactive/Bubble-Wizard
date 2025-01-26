@@ -27,4 +27,3 @@ position = Vector2(65, 278)
 position = Vector2(1568, 241)
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource("4_8wklt")]
-visible = false

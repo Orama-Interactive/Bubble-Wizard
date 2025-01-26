@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var horizontal_speed := 150.0
 @export_category("Jumping and Gravity")
 @export var jump_velocity := -100.0
+@export var jump_velocity_no_variable_height_factor := 1.7
 @export var coyote_seconds := 0.2
 @export var jump_buffer := 0.05
 ## The strength at which your character will be pulled to the ground.
@@ -159,6 +160,8 @@ func _handle_jump() -> bool:
 			jump_buffer_timer.stop()
 	if jump_pressed and can_jump:  # Jump
 		var final_jump_velocity := jump_velocity
+		if not variable_height:
+			final_jump_velocity *= jump_velocity_no_variable_height_factor
 		if bubble_form:
 			just_jumped_off_bubble = true
 		if just_jumped_off_bubble:

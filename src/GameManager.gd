@@ -1,8 +1,5 @@
 extends Node
 
-@warning_ignore("unused_signal")
-signal mouse_movement_enabled(enable: bool)
-
 var levels: Array[PackedScene] = [
 	preload("res://src/Levels/level_1.tscn"),
 	preload("res://src/Levels/level_2.tscn"),

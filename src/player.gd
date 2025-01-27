@@ -25,7 +25,6 @@ extends CharacterBody2D
 @export_category("Input")
 @export var mouse_movement_radius := Vector2(64.0, 64.0)
 var can_move := true
-var can_move_with_mouse := true
 var can_jump := false
 var jump_pressed := false
 var bubble_form := false:
@@ -74,7 +73,6 @@ var touching_spike := false
 
 
 func _ready() -> void:
-	GameManager.mouse_movement_enabled.connect(func(enable: bool): can_move_with_mouse = enable)
 	animated_sprite_2d.play(&"idle")
 	bubble_cast_ray_cast_2d.target_position.y = -bubble_spawn_position_offset
 	bubble_timer.wait_time = bubble_duration
@@ -139,7 +137,7 @@ func _bubble_movement(delta: float) -> void:
 		return
 	_handle_horizontal_movement(bubble_speed, bubble_decelerate)
 	var direction_vert := Input.get_axis(&"up", &"down")
-	if Input.is_action_pressed(&"left_mouse") and can_move_with_mouse:
+	if Input.is_action_pressed(&"left_mouse") and not DisplayServer.is_touchscreen_available():
 		var mouse_pos := get_global_mouse_position()
 		var diff := mouse_pos.y - position.y
 		direction_vert = clampf(diff / mouse_movement_radius.y, -1.0, 1.0)
@@ -161,7 +159,7 @@ func _bubble_movement(delta: float) -> void:
 
 func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
 	var direction := Input.get_axis(&"left", &"right")
-	if Input.is_action_pressed(&"left_mouse") and can_move_with_mouse:
+	if Input.is_action_pressed(&"left_mouse") and not DisplayServer.is_touchscreen_available():
 		var mouse_pos := get_global_mouse_position()
 		var diff := mouse_pos.x - position.x
 		direction = clampf(diff / mouse_movement_radius.x, -1.0, 1.0)

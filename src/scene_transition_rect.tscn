@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bftkpvc737gwv"]
+[gd_scene load_steps=9 format=3 uid="uid://bftkpvc737gwv"]
 
 [ext_resource type="Script" path="res://src/scene_transition_rect.gd" id="1_02mnc"]
 [ext_resource type="Texture2D" uid="uid://cjnawa8ae78g1" path="res://assets/player/bubble/bubble(bottom) _0001.png" id="2_bxnql"]
 [ext_resource type="Texture2D" uid="uid://ccpi16pfijkoe" path="res://assets/player/jumpup/wizard_jumpup_0003.png" id="2_gwul4"]
+[ext_resource type="Script" path="res://addons/touch_screen_joystick/scripts/touch_screen_joystick.gd" id="4_xjkdq"]
 
 [sub_resource type="Animation" id="Animation_4xnp4"]
 length = 0.001
@@ -58,17 +59,39 @@ _data = {
 
 [node name="SceneTransitionRect" type="CanvasLayer"]
 script = ExtResource("1_02mnc")
-metadata/_edit_horizontal_guides_ = [231.0, 253.0]
 metadata/_edit_vertical_guides_ = [240.0]
+metadata/_edit_horizontal_guides_ = [209.0, 253.0]
+
+[node name="TouchScreenJoystick" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = -64.0
+offset_right = 89.0
+offset_bottom = -24.0
+grow_vertical = 0
+pivot_offset = Vector2(20, 20)
+script = ExtResource("4_xjkdq")
+base_radius = 36.0
+knob_radius = 16.0
+use_input_actions = true
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
 
 [node name="JumpTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(224, 221)
+position = Vector2(328, 198)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("2_gwul4")
 action = "jump"
 visibility_mode = 1
 
 [node name="ChargeTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(427, 230)
+position = Vector2(410, 207)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("2_bxnql")
 action = "charge_bubble"
 visibility_mode = 1
@@ -87,6 +110,4 @@ libraries = {
 "": SubResource("AnimationLibrary_bjr04")
 }
 
-[connection signal="pressed" from="ChargeTouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
-[connection signal="released" from="ChargeTouchScreenButton" to="." method="_on_touch_screen_button_released"]
 [connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

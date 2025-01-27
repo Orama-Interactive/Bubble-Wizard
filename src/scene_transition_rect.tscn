@@ -1,21 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bftkpvc737gwv"]
+[gd_scene load_steps=8 format=3 uid="uid://bftkpvc737gwv"]
 
 [ext_resource type="Script" path="res://src/scene_transition_rect.gd" id="1_02mnc"]
-
-[sub_resource type="Animation" id="Animation_6fnej"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
+[ext_resource type="Texture2D" uid="uid://cjnawa8ae78g1" path="res://assets/player/bubble/bubble(bottom) _0001.png" id="2_bxnql"]
+[ext_resource type="Texture2D" uid="uid://ccpi16pfijkoe" path="res://assets/player/jumpup/wizard_jumpup_0003.png" id="2_gwul4"]
 
 [sub_resource type="Animation" id="Animation_4xnp4"]
 length = 0.001
@@ -47,6 +34,21 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_6fnej"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bjr04"]
 _data = {
 "RESET": SubResource("Animation_4xnp4"),
@@ -56,6 +58,19 @@ _data = {
 
 [node name="SceneTransitionRect" type="CanvasLayer"]
 script = ExtResource("1_02mnc")
+metadata/_edit_horizontal_guides_ = [231.0, 253.0]
+
+[node name="JumpTouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(391, 221)
+texture_normal = ExtResource("2_gwul4")
+action = "jump"
+visibility_mode = 1
+
+[node name="ChargeTouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(427, 230)
+texture_normal = ExtResource("2_bxnql")
+action = "charge_bubble"
+visibility_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -71,4 +86,8 @@ libraries = {
 "": SubResource("AnimationLibrary_bjr04")
 }
 
+[connection signal="pressed" from="JumpTouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="JumpTouchScreenButton" to="." method="_on_touch_screen_button_released"]
+[connection signal="pressed" from="ChargeTouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="ChargeTouchScreenButton" to="." method="_on_touch_screen_button_released"]
 [connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

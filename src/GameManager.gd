@@ -36,6 +36,7 @@ func change_level() -> void:
 		get_tree().change_scene_to_packed(levels[current_level_index])
 	else:
 		get_tree().change_scene_to_file("res://src/Menu/menu.tscn")
+		current_level_index = 0
 
 
 func restart_level() -> void:

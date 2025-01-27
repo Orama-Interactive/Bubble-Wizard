@@ -330,6 +330,10 @@ shape = SubResource("CapsuleShape2D_dftk0")
 position = Vector2(2, 4)
 shape = SubResource("CapsuleShape2D_qpkk0")
 
+[node name="BubbleCastRayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -32)
+collision_mask = 6
+
 [node name="BubbleTimer" type="Timer" parent="."]
 one_shot = true
 

@@ -58,6 +58,8 @@ var touching_spike := false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var bubble_sprites: Node2D = $BubbleSprites
 @onready var bubble_sprite_layer_3: AnimatedSprite2D = $BubbleSprites/BubbleSpriteLayer3
+## Used to prevent the player from creating a bubble inside a wall.
+@onready var bubble_cast_ray_cast_2d: RayCast2D = $BubbleCastRayCast2D
 @onready var bubble_timer: Timer = $BubbleTimer
 @onready var bubble_gravity_timer: Timer = $BubbleGravityTimer
 @onready var bubble_about_to_burst_timer: Timer = $BubbleAboutToBurstTimer
@@ -70,6 +72,7 @@ var touching_spike := false
 
 func _ready() -> void:
 	animated_sprite_2d.play(&"idle")
+	bubble_cast_ray_cast_2d.target_position.y = -bubble_spawn_position_offset
 	bubble_timer.wait_time = bubble_duration
 	bubble_gravity_timer.wait_time = bubble_duration / 3.0
 	bubble_about_to_burst_timer.wait_time = bubble_duration - bubble_duration / 3.0
@@ -206,14 +209,14 @@ func _handle_death() -> void:
 
 
 func _charge_bubble_form() -> void:
-	if Input.is_action_just_pressed("charge_bubble"):
+	if Input.is_action_just_pressed("charge_bubble") and not bubble_cast_ray_cast_2d.is_colliding():
 		charge_bubble_timer.start()
 		bubble_sprite_layer_3.visible = true
 		bubble_sprite_layer_3.position.y = 4 - bubble_spawn_position_offset
 		bubble_sprite_layer_3.play(&"charge")
 		animated_sprite_2d.play(&"charge")
 		$Audios/BubbleCast.play()
-	if Input.is_action_just_released("charge_bubble"):
+	if Input.is_action_just_released("charge_bubble") or bubble_cast_ray_cast_2d.is_colliding():
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
 			bubble_sprite_layer_3.position.y = 4

@@ -242,6 +242,7 @@ func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
 		$SpikeTimer.start()
 	else:
 		death_spikes.play()
+		touching_spike = false
 		_handle_death()
 
 

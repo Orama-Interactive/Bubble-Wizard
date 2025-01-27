@@ -59,9 +59,10 @@ _data = {
 [node name="SceneTransitionRect" type="CanvasLayer"]
 script = ExtResource("1_02mnc")
 metadata/_edit_horizontal_guides_ = [231.0, 253.0]
+metadata/_edit_vertical_guides_ = [240.0]
 
 [node name="JumpTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(391, 221)
+position = Vector2(224, 221)
 texture_normal = ExtResource("2_gwul4")
 action = "jump"
 visibility_mode = 1

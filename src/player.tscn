@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=61 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://bf820r0golprb" path="res://assets/player/idle/wizard_idle_0001.png" id="2_0itaa"]
@@ -46,8 +46,12 @@
 [ext_resource type="Texture2D" uid="uid://dnytglhftiqm6" path="res://assets/player/casting/wizard_casting_0006.png" id="27_b7v5f"]
 [ext_resource type="Texture2D" uid="uid://duto14q5y6pmd" path="res://assets/player/casting/wizard_casting_0007.png" id="28_jchja"]
 [ext_resource type="Texture2D" uid="uid://qtkohuqdc721" path="res://assets/player/casting/wizard_casting_0008.png" id="29_yabs3"]
+[ext_resource type="AudioStream" uid="uid://cr7khefjb4vc8" path="res://assets/audio/sounds/jump.wav" id="47_fel1h"]
 [ext_resource type="AudioStream" uid="uid://ddvupf1tl4wk5" path="res://assets/audio/sounds/bubble_pop.wav" id="47_n27jn"]
 [ext_resource type="AudioStream" uid="uid://dnrs3ucf1cw7l" path="res://assets/audio/sounds/death_spikes.wav" id="48_usckj"]
+[ext_resource type="AudioStream" uid="uid://vk1gpgix48ms" path="res://assets/audio/sounds/landing.wav" id="49_bx0eo"]
+[ext_resource type="AudioStream" uid="uid://bhovnoaedelf0" path="res://assets/audio/sounds/bubble_cast.ogg" id="49_p85jp"]
+[ext_resource type="AudioStream" uid="uid://c1sa37loirj61" path="res://assets/audio/sounds/on_the_bubble.ogg" id="49_vdb38"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u717o"]
 animations = [{
@@ -265,6 +269,11 @@ height = 20.0
 radius = 4.0
 height = 18.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7wlu2"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("47_fel1h")
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
 script = ExtResource("1_r1i7a")
@@ -294,7 +303,7 @@ animation = &"idle"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -3)
 sprite_frames = SubResource("SpriteFrames_3hjps")
-animation = &"charge"
+animation = &"jump_up"
 
 [node name="BubbleArea2D" type="Area2D" parent="."]
 collision_mask = 2
@@ -343,9 +352,15 @@ one_shot = true
 wait_time = 0.1
 autostart = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [node name="Audios" type="Node" parent="."]
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="Audios"]
+stream = SubResource("AudioStreamRandomizer_7wlu2")
+bus = &"Sounds"
+
+[node name="BubbleCast" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("49_p85jp")
+bus = &"Sounds"
 
 [node name="BubblePop" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("47_n27jn")
@@ -353,6 +368,14 @@ bus = &"Sounds"
 
 [node name="DeathSpikes" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("48_usckj")
+bus = &"Sounds"
+
+[node name="FallDamage" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("49_bx0eo")
+bus = &"Sounds"
+
+[node name="OnTheBubble" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("49_vdb38")
 bus = &"Sounds"
 
 [connection signal="animation_finished" from="BubbleSprites/BubbleSpriteLayer3" to="." method="_on_bubble_sprite_layer_3_animation_finished"]

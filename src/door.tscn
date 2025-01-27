@@ -1,35 +1,121 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2au20kefpvwq"]
+[gd_scene load_steps=10 format=3 uid="uid://d2au20kefpvwq"]
 
 [ext_resource type="Script" path="res://src/door.gd" id="1_5kgvp"]
 [ext_resource type="Texture2D" uid="uid://cwa2ahn4o6xtq" path="res://assets/tileset/door_0001.png" id="1_wdqiy"]
 [ext_resource type="Texture2D" uid="uid://bxt058jot82aw" path="res://assets/tileset/door_0002.png" id="2_2ijwv"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4j26m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_wdqiy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_2ijwv")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="AudioStream" uid="uid://xqmc0urpcrm8" path="res://assets/audio/sounds/door_open.wav" id="4_ewkoc"]
+[ext_resource type="AudioStream" uid="uid://jb6rt0pdvuld" path="res://assets/audio/sounds/door_close.wav" id="5_rc80o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k1y67"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_7idv7"]
+resource_name = "next_level"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_wdqiy"), ExtResource("2_2ijwv"), ExtResource("1_wdqiy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorOpen:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorClose:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3oj8b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_wdqiy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorOpen:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DoorClose:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1yjro"]
+_data = {
+"RESET": SubResource("Animation_3oj8b"),
+"next_level": SubResource("Animation_7idv7")
+}
+
 [node name="Door" type="Area2D"]
 script = ExtResource("1_5kgvp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4j26m")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wdqiy")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 15)
 shape = SubResource("CapsuleShape2D_k1y67")
+
+[node name="DoorOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ewkoc")
+bus = &"Sounds"
+
+[node name="DoorClose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rc80o")
+bus = &"Sounds"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1yjro")
+}
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

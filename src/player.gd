@@ -39,12 +39,14 @@ var bubble_form := false:
 			bubble_gravity_timer.start()
 			bubble_about_to_burst_timer.start()
 			bubble_sprite_layer_3.position.y = 4
+			$Audios/OnTheBubble.play()
 			for child: AnimatedSprite2D in bubble_sprites.get_children():
 				child.visible = true
 				child.play(&"idle")
 		else:
 			bubble_about_to_burst_timer.stop()
 			bubble_sprite_layer_3.play(&"pop")
+			$Audios/OnTheBubble.stop()
 			$Audios/BubblePop.play()
 			$BubbleSprites/Layer2.visible = false
 			$BubbleSprites/Layer1.visible = false
@@ -62,6 +64,8 @@ var touching_spike := false
 @onready var charge_bubble_timer: Timer = $ChargeBubbleTimer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
+@onready var jump_audio: AudioStreamPlayer = $Audios/JumpAudio
+@onready var death_spikes: AudioStreamPlayer = $Audios/DeathSpikes
 
 
 func _ready() -> void:
@@ -90,6 +94,8 @@ func _normal_movement(delta: float) -> void:
 	if is_on_floor():
 		can_jump = true
 		if not bubble_form and last_vertical_velocity > fall_damage_velocity:
+			# Die of fall damage
+			$Audios/FallDamage.play()
 			_handle_death()
 	else:
 		if can_jump and coyote_timer.is_stopped():
@@ -113,6 +119,7 @@ func _normal_movement(delta: float) -> void:
 			charge_bubble_timer.stop()
 			bubble_sprite_layer_3.play(&"idle")
 			bubble_sprite_layer_3.visible = false
+			$Audios/BubbleCast.stop()
 
 	velocity.y = clampf(velocity.y, -terminal_velocity, terminal_velocity)
 	last_vertical_velocity = velocity.y
@@ -186,6 +193,8 @@ func _handle_jump() -> bool:
 			final_jump_velocity *= 2.0
 		velocity.y = final_jump_velocity
 		animated_sprite_2d.play(&"jump_up")
+		if is_on_floor():
+			jump_audio.play()
 		return true
 	return false
 
@@ -203,12 +212,14 @@ func _charge_bubble_form() -> void:
 		bubble_sprite_layer_3.position.y = 4 - bubble_spawn_position_offset
 		bubble_sprite_layer_3.play(&"charge")
 		animated_sprite_2d.play(&"charge")
+		$Audios/BubbleCast.play()
 	if Input.is_action_just_released("charge_bubble"):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
 			bubble_sprite_layer_3.position.y = 4
 			bubble_sprite_layer_3.play(&"idle")
 			bubble_sprite_layer_3.visible = false
+			$Audios/BubbleCast.stop()
 
 
 func _on_bubble_timer_timeout() -> void:
@@ -230,7 +241,7 @@ func _on_spike_area_2d_body_entered(_body: Node2D) -> void:
 		bubble_form = false
 		$SpikeTimer.start()
 	else:
-		$Audios/DeathSpikes.play()
+		death_spikes.play()
 		_handle_death()
 
 
@@ -256,7 +267,9 @@ func _on_jump_buffer_timer_timeout() -> void:
 
 func _on_spike_timer_timeout() -> void:
 	if touching_spike and not bubble_form:
+		death_spikes.play()
 		_handle_death()
+		touching_spike = false
 
 
 func _on_bubble_gravity_timer_timeout() -> void:

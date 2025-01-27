@@ -86,8 +86,6 @@ libraries = {
 "": SubResource("AnimationLibrary_bjr04")
 }
 
-[connection signal="pressed" from="JumpTouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
-[connection signal="released" from="JumpTouchScreenButton" to="." method="_on_touch_screen_button_released"]
 [connection signal="pressed" from="ChargeTouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="ChargeTouchScreenButton" to="." method="_on_touch_screen_button_released"]
 [connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

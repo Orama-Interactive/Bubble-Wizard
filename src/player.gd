@@ -22,6 +22,8 @@ extends CharacterBody2D
 @export var bubble_charge_time := 0.6
 @export var bubble_terminal_velocity := 230.0
 @export var bubble_spawn_position_offset := 32
+@export_category("Input")
+@export var mouse_movement_radius := Vector2(64.0, 64.0)
 var can_move := true
 var can_jump := false
 var jump_pressed := false
@@ -135,6 +137,10 @@ func _bubble_movement(delta: float) -> void:
 		return
 	_handle_horizontal_movement(bubble_speed, bubble_decelerate)
 	var direction_vert := Input.get_axis(&"up", &"down")
+	if Input.is_action_pressed(&"left_mouse"):
+		var mouse_pos := get_global_mouse_position()
+		var diff := mouse_pos.y - position.y
+		direction_vert = clampf(diff / mouse_movement_radius.y, -1.0, 1.0)
 	if not can_move:
 		direction_vert = 0.0
 	var gravity := get_gravity() * delta * bubble_gravity_scale
@@ -153,6 +159,10 @@ func _bubble_movement(delta: float) -> void:
 
 func _handle_horizontal_movement(speed: float, deceleration: float) -> float:
 	var direction := Input.get_axis(&"left", &"right")
+	if Input.is_action_pressed(&"left_mouse"):
+		var mouse_pos := get_global_mouse_position()
+		var diff := mouse_pos.x - position.x
+		direction = clampf(diff / mouse_movement_radius.x, -1.0, 1.0)
 	if not can_move:
 		direction = 0.0
 	if direction:

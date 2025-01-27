@@ -200,12 +200,13 @@ func _charge_bubble_form() -> void:
 	if Input.is_action_just_pressed("charge_bubble"):
 		charge_bubble_timer.start()
 		bubble_sprite_layer_3.visible = true
-		bubble_sprite_layer_3.position.y -= bubble_spawn_position_offset
+		bubble_sprite_layer_3.position.y = 4 - bubble_spawn_position_offset
 		bubble_sprite_layer_3.play(&"charge")
 		animated_sprite_2d.play(&"charge")
 	if Input.is_action_just_released("charge_bubble"):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
+			bubble_sprite_layer_3.position.y = 4
 			bubble_sprite_layer_3.play(&"idle")
 			bubble_sprite_layer_3.visible = false
 

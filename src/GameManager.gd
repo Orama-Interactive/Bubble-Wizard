@@ -25,9 +25,10 @@ func _input(event: InputEvent) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 
-
 func start_changing_level() -> void:
-	var scene_transition_rect := get_tree().current_scene.find_child("SceneTransitionRect") as SceneTransitionRect
+	var scene_transition_rect := (
+		get_tree().current_scene.find_child("SceneTransitionRect") as SceneTransitionRect
+	)
 	scene_transition_rect.animation_player.play(&"fade_in")
 
 

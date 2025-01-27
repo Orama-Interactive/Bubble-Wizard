@@ -1,6 +1,7 @@
 extends Panel
 
-@onready var variable_height_check_box: CheckBox = $MarginContainer/VBoxContainer/VariableHeightCheckBox
+@onready
+var variable_height_check_box: CheckBox = $MarginContainer/VBoxContainer/VariableHeightCheckBox
 @onready var languages: Container = $MarginContainer/VBoxContainer/Languages
 @onready var master_volume_slider: ValueSlider = %MasterVolumeSlider
 @onready var music_volume_slider: ValueSlider = %MusicVolumeSlider

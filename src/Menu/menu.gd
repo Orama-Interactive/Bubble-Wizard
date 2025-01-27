@@ -5,7 +5,8 @@ extends Panel
 
 func _ready() -> void:
 	player_animated_sprite_2d.play(&"default")
-	GameManager.audio_stream_player.play()
+	if not GameManager.audio_stream_player.playing:
+		GameManager.audio_stream_player.play()
 
 
 func _on_play_button_pressed() -> void:

@@ -3,7 +3,7 @@ extends Camera2D
 
 @export var player: Player
 @export var smoothing_enabled := true
-@export_range(1, 10) var smoothing_distance := 2.0
+@export_range(1, 10) var smoothing_distance := 1.0
 
 var weight: float
 

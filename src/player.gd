@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var horizontal_speed := 150.0
 @export_category("Jumping and Gravity")
-@export var jump_velocity := -100.0
+@export var jump_velocity := -110.0
 @export var jump_velocity_no_variable_height_factor := 1.8
 @export var coyote_seconds := 0.2
 @export var jump_buffer := 0.05
@@ -11,8 +11,8 @@ extends CharacterBody2D
 @export_range(0, 20) var gravity_scale := 0.6
 ## Your player will move this amount faster when falling providing a less floaty jump curve.
 @export_range(0.5, 3) var descending_gravity_factor := 1.1
-@export var terminal_velocity := 300.0
-@export var fall_damage_velocity := 290.0
+@export var terminal_velocity := 500.0
+@export var fall_damage_velocity := 350.0
 @export_category("Bubble form")
 @export var bubble_speed := 120.0
 @export var bubble_vertical_speed := 1.0

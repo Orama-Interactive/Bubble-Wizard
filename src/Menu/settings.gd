@@ -9,6 +9,7 @@ var variable_height_check_box: CheckBox = $MarginContainer/VBoxContainer/Variabl
 
 
 func _ready() -> void:
+	variable_height_check_box.grab_focus()
 	variable_height_check_box.button_pressed = GameManager.variable_height
 	var current_locale := TranslationServer.get_locale()
 	var loaded_locales := TranslationServer.get_loaded_locales()

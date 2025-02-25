@@ -1,9 +1,11 @@
 extends Panel
 
+@onready var play_button: Button = %PlayButton
 @onready var player_animated_sprite_2d: AnimatedSprite2D = $PlayerAnimatedSprite2D
 
 
 func _ready() -> void:
+	play_button.grab_focus()
 	player_animated_sprite_2d.play(&"default")
 	if not GameManager.audio_stream_player.playing:
 		GameManager.audio_stream_player.play()

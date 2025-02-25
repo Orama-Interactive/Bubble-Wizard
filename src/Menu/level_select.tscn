@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkoq3el6vstft"]
+
+[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="1_k7pwl"]
+[ext_resource type="Script" path="res://src/Menu/level_select.gd" id="2_o7vs7"]
+
+[node name="LevelSelect" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k7pwl")
+script = ExtResource("2_o7vs7")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="ReturnToMenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -32.0
+offset_right = 88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"UnchainedButton"
+text = "Return to menu"
+
+[connection signal="pressed" from="ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]

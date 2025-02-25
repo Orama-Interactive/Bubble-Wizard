@@ -74,6 +74,10 @@ layout_mode = 2
 theme_type_variation = &"FirstButton"
 text = "Play"
 
+[node name="SelectLevelButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select level"
+
 [node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
@@ -87,5 +91,6 @@ position = Vector2(46, 240)
 sprite_frames = SubResource("SpriteFrames_scs61")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

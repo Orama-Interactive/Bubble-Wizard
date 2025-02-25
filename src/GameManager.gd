@@ -49,6 +49,9 @@ func restart_level() -> void:
 
 func save_game(level_index: int) -> void:
 	config_file.set_value("progress", "level", level_index)
+	var max_level: int = config_file.get_value("progress", "max_level", 0)
+	if level_index > max_level:
+		config_file.set_value("progress", "max_level", level_index)
 	config_file.save(CONFIG_PATH)
 
 

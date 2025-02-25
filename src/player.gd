@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+const BUBBLE_POP := preload("res://src/bubble_pop.tscn")
+
 @export var horizontal_speed := 150.0
 @export_category("Jumping and Gravity")
 @export var jump_velocity := -110.0
@@ -47,11 +49,14 @@ var bubble_form := false:
 				child.play(&"idle")
 		else:
 			bubble_about_to_burst_timer.stop()
-			bubble_sprite_layer_3.play(&"pop")
+			var bubble_pop_node := BUBBLE_POP.instantiate()
+			bubble_pop_node.global_position = global_position
+			bubble_pop_node.play(&"pop")
+			get_parent().add_child(bubble_pop_node)
 			$Audios/OnTheBubble.stop()
 			$Audios/BubblePop.play()
-			$BubbleSprites/Layer2.visible = false
-			$BubbleSprites/Layer1.visible = false
+			for child: AnimatedSprite2D in bubble_sprites.get_children():
+				child.visible = false
 var last_vertical_velocity := 0.0
 var just_jumped_off_bubble := false
 var should_bubble_fall := false
@@ -294,8 +299,3 @@ func _on_bubble_about_to_burst_timer_timeout() -> void:
 	if bubble_form:
 		for child: AnimatedSprite2D in bubble_sprites.get_children():
 			child.play(&"critical")
-
-
-func _on_bubble_sprite_layer_3_animation_finished() -> void:
-	if bubble_sprite_layer_3.animation == &"pop":
-		bubble_sprite_layer_3.visible = false

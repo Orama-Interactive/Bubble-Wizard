@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://wjau22rv2yfi"]
+[gd_scene load_steps=56 format=3 uid="uid://wjau22rv2yfi"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_r1i7a"]
 [ext_resource type="Texture2D" uid="uid://bf820r0golprb" path="res://assets/player/idle/wizard_idle_0001.png" id="2_0itaa"]
@@ -16,21 +16,16 @@
 [ext_resource type="Texture2D" uid="uid://ba6lx0acnv701" path="res://assets/player/bubble/charge_0004.png" id="5_54xiu"]
 [ext_resource type="Texture2D" uid="uid://lgkukth6qsqd" path="res://assets/player/idle/wizard_idle_0004.png" id="5_e2ua5"]
 [ext_resource type="Texture2D" uid="uid://cjnawa8ae78g1" path="res://assets/player/bubble/bubble(bottom) _0001.png" id="5_jea7p"]
-[ext_resource type="Texture2D" uid="uid://dsol1uoitufmm" path="res://assets/player/bubble/bubble_pop_0001.png" id="5_wrnxe"]
-[ext_resource type="Texture2D" uid="uid://epnk34ihfp2" path="res://assets/player/bubble/bubble_pop_0002.png" id="6_deehl"]
 [ext_resource type="Texture2D" uid="uid://2ambkpwfda0f" path="res://assets/player/bubble/charge_0005.png" id="6_jxkhv"]
 [ext_resource type="Texture2D" uid="uid://dt5dfbgi26exc" path="res://assets/player/bubble/bubble(bottom) _0002.png" id="6_ugvut"]
 [ext_resource type="Texture2D" uid="uid://3bkekl3uwot6" path="res://assets/player/idle/wizard_idle_0005.png" id="6_wuf03"]
-[ext_resource type="Texture2D" uid="uid://dksewdbdqhkoe" path="res://assets/player/bubble/bubble_pop_0003.png" id="7_2n0u0"]
 [ext_resource type="Texture2D" uid="uid://c8binva2k2n8q" path="res://assets/player/bubble/charge_0006.png" id="7_d51t1"]
 [ext_resource type="Texture2D" uid="uid://b6b35d7laxka3" path="res://assets/player/bubble/bubble(bottom) _0003.png" id="7_vd0yi"]
 [ext_resource type="Texture2D" uid="uid://t6dxnf1yshh7" path="res://assets/player/walking/wizard_walking_0001.png" id="7_ymq4f"]
 [ext_resource type="Shader" path="res://src/Shaders/Overlay.gdshader" id="8_7ui4k"]
 [ext_resource type="Texture2D" uid="uid://c0ft3l3ihp00u" path="res://assets/player/walking/wizard_walking_0002.png" id="8_flxob"]
-[ext_resource type="Texture2D" uid="uid://txpiy51mmu3v" path="res://assets/player/bubble/bubble_pop_0004.png" id="8_k8d2a"]
 [ext_resource type="Texture2D" uid="uid://lf1x1x1decxo" path="res://assets/player/bubble/charge_0007.png" id="8_tmj1i"]
 [ext_resource type="Texture2D" uid="uid://bvtsxfpywma1s" path="res://assets/player/walking/wizard_walking_0003.png" id="9_1v0l3"]
-[ext_resource type="Texture2D" uid="uid://cfgk3mcdof48y" path="res://assets/player/bubble/bubble_pop_0005.png" id="9_hs4hm"]
 [ext_resource type="Texture2D" uid="uid://jutwyqhxwo5q" path="res://assets/player/bubble/charge_0008.png" id="9_u5bcl"]
 [ext_resource type="Texture2D" uid="uid://bvsq6d8pmo3f8" path="res://assets/player/walking/wizard_walking_0004.png" id="10_doumy"]
 [ext_resource type="Texture2D" uid="uid://cmhh01ae40co1" path="res://assets/player/jumphighest/wizard_jumphighest_0001.png" id="10_podvu"]
@@ -102,26 +97,6 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_wrnxe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_deehl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_2n0u0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_k8d2a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_hs4hm")
-}],
-"loop": false,
-"name": &"pop",
-"speed": 6.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wea1p"]
@@ -291,7 +266,7 @@ visible = false
 modulate = Color(1, 1, 1, 0.498039)
 position = Vector2(1, 4)
 sprite_frames = SubResource("SpriteFrames_wea1p")
-animation = &"critical"
+animation = &"idle"
 
 [node name="Layer1" type="AnimatedSprite2D" parent="BubbleSprites"]
 visible = false
@@ -382,7 +357,6 @@ bus = &"Sounds"
 stream = ExtResource("49_vdb38")
 bus = &"Sounds"
 
-[connection signal="animation_finished" from="BubbleSprites/BubbleSpriteLayer3" to="." method="_on_bubble_sprite_layer_3_animation_finished"]
 [connection signal="body_entered" from="BubbleArea2D" to="." method="_on_bubble_area_2d_body_entered"]
 [connection signal="body_entered" from="SpikeArea2D" to="." method="_on_spike_area_2d_body_entered"]
 [connection signal="body_exited" from="SpikeArea2D" to="." method="_on_spike_area_2d_body_exited"]

@@ -16,7 +16,8 @@ func _on_play_button_pressed() -> void:
 		GameManager.audio_stream_player.get_stream_playback() as AudioStreamPlaybackInteractive
 	)
 	music_stream.switch_to_clip_by_name(&"Game")
-	get_tree().change_scene_to_file("res://src/Levels/level_1.tscn")
+	GameManager.current_level_index = GameManager.load_game()
+	GameManager.change_level()
 
 
 func _on_settings_button_pressed() -> void:

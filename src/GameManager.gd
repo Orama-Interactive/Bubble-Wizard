@@ -1,12 +1,14 @@
 extends Node
 
+const CONFIG_PATH := "user://save.cfg"
+
 var levels: Array[PackedScene] = [
 	preload("res://src/Levels/level_1.tscn"),
 	preload("res://src/Levels/level_2.tscn"),
 	preload("res://src/Levels/level_3.tscn"),
 	preload("res://src/Levels/level_4.tscn"),
 ]
-
+var config_file := ConfigFile.new()
 var current_level_index := 0
 var variable_height := true
 
@@ -38,7 +40,19 @@ func change_level() -> void:
 	else:
 		get_tree().change_scene_to_file("res://src/Menu/menu.tscn")
 		current_level_index = 0
+	save_game(current_level_index)
 
 
 func restart_level() -> void:
 	get_tree().reload_current_scene()
+
+
+func save_game(level_index: int) -> void:
+	config_file.set_value("progress", "level", level_index)
+	config_file.save(CONFIG_PATH)
+
+
+func load_game() -> int:
+	config_file.load(CONFIG_PATH)
+	var level_index = config_file.get_value("progress", "level", 0)
+	return level_index

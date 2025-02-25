@@ -13,6 +13,7 @@ config_version=5
 config/name="Bubble Wizard"
 config/description="A game made for Global Game Jam 2025"
 run/main_scene="res://src/logo_splash.tscn"
+config/custom_user_dir_name="bubble_wizard"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.0941176, 0.0784314, 0.145098, 1)
 config/icon="res://assets/player/idle/wizard_idle_0001.png"

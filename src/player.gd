@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const BUBBLE_POP := preload("res://src/bubble_pop.tscn")
 
-@export var horizontal_speed := 150.0
+@export var horizontal_speed := 140.0
 @export_category("Jumping and Gravity")
 @export var jump_velocity := -110.0
 @export var jump_velocity_no_variable_height_factor := 1.8
@@ -219,7 +219,7 @@ func _handle_jump() -> bool:
 
 func _handle_death() -> void:
 	can_move = false
-	animated_sprite_2d.visible = false
+	visible = false
 	GameManager.start_changing_level()
 
 

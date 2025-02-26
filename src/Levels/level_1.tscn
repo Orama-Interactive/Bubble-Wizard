@@ -62,4 +62,4 @@ theme = ExtResource("5_m1g1x")
 text = "Hold %s to make bigger jumps"
 label_settings = SubResource("LabelSettings_w0eeb")
 
-[node name="SceneTransitionRect" parent="." instance=ExtResource("2_i501i")]
+[node name="UILayer" parent="." instance=ExtResource("2_i501i")]

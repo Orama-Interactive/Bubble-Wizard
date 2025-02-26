@@ -56,4 +56,4 @@ text = "Falling from a great height
 without a bubble will kill you!"
 label_settings = SubResource("LabelSettings_nw1sg")
 
-[node name="SceneTransitionRect" parent="." instance=ExtResource("5_ih2ny")]
+[node name="UILayer" parent="." instance=ExtResource("5_ih2ny")]

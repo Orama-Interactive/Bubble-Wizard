@@ -22,6 +22,7 @@ Vector2i(-1, -1): {
 }
 
 [node name="GameManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_5nobd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

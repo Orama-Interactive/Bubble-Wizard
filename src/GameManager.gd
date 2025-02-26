@@ -30,10 +30,8 @@ func _input(event: InputEvent) -> void:
 
 
 func start_changing_level() -> void:
-	var scene_transition_rect := (
-		get_tree().current_scene.find_child("SceneTransitionRect") as SceneTransitionRect
-	)
-	scene_transition_rect.animation_player.play(&"fade_in")
+	var ui_layer := get_tree().current_scene.find_child("UILayer") as UILayer
+	ui_layer.animation_player.play(&"fade_in")
 
 
 func change_level() -> void:
@@ -47,6 +45,26 @@ func change_level() -> void:
 
 func restart_level() -> void:
 	get_tree().reload_current_scene()
+
+
+func pause() -> void:
+	var scene := get_tree().current_scene
+	if get_tree().paused:
+		unpause()
+		return
+	get_tree().paused = true
+	var ui_layer := scene.find_child("UILayer") as UILayer
+	ui_layer.pause_menu.visible = true
+	ui_layer.pause_menu.get_child(1).grab_focus()
+	create_tween().tween_property(ui_layer.pause_menu_color_rect, "color", Color(0, 0, 0, 0.4), 0.3)
+
+
+func unpause() -> void:
+	var scene := get_tree().current_scene
+	get_tree().paused = false
+	var ui_layer := scene.find_child("UILayer") as UILayer
+	ui_layer.pause_menu.visible = false
+	create_tween().tween_property(ui_layer.pause_menu_color_rect, "color", Color(0, 0, 0, 0), 0.3)
 
 
 func save_game(level_index: int) -> void:

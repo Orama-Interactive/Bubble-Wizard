@@ -26,4 +26,4 @@ position = Vector2(1405, 593)
 [node name="Player" parent="." instance=ExtResource("3_p8v53")]
 position = Vector2(52, 191)
 
-[node name="SceneTransitionRect" parent="." instance=ExtResource("4_y0iv0")]
+[node name="UILayer" parent="." instance=ExtResource("4_y0iv0")]

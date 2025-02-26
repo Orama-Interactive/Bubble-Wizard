@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bftkpvc737gwv"]
+[gd_scene load_steps=10 format=3 uid="uid://bftkpvc737gwv"]
 
 [ext_resource type="Script" path="res://src/scene_transition_rect.gd" id="1_02mnc"]
 [ext_resource type="Texture2D" uid="uid://cjnawa8ae78g1" path="res://assets/player/bubble/bubble(bottom) _0001.png" id="2_bxnql"]
 [ext_resource type="Texture2D" uid="uid://ccpi16pfijkoe" path="res://assets/player/jumpup/wizard_jumpup_0003.png" id="2_gwul4"]
 [ext_resource type="Script" path="res://addons/touch_screen_joystick/scripts/touch_screen_joystick.gd" id="4_xjkdq"]
+[ext_resource type="Theme" uid="uid://brfk3i8rajw3l" path="res://assets/theme.tres" id="5_n1evx"]
 
 [sub_resource type="Animation" id="Animation_4xnp4"]
 length = 0.001
@@ -57,7 +58,8 @@ _data = {
 "fade_out": SubResource("Animation_6fnej")
 }
 
-[node name="SceneTransitionRect" type="CanvasLayer"]
+[node name="UILayer" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_02mnc")
 metadata/_edit_vertical_guides_ = [240.0]
 metadata/_edit_horizontal_guides_ = [209.0, 253.0]
@@ -96,7 +98,13 @@ texture_normal = ExtResource("2_bxnql")
 action = "charge_bubble"
 visibility_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../FadeColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_bjr04")
+}
+
+[node name="FadeColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -105,9 +113,51 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.054902, 0.054902, 0.172549, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
-libraries = {
-"": SubResource("AnimationLibrary_bjr04")
-}
+[node name="PauseMenuColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
-[connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_n1evx")
+
+[node name="PauseMenu" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_right = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PausedLabel" type="Label" parent="UI/PauseMenu"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="UI/PauseMenu"]
+layout_mode = 2
+theme_type_variation = &"UnchainedButton"
+text = "Resume"
+
+[node name="ReturnToMenu" type="Button" parent="UI/PauseMenu"]
+layout_mode = 2
+text = "Return to menu"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="UI/PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]

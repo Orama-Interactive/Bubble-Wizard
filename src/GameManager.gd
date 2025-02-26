@@ -16,6 +16,7 @@ var variable_height := true
 
 
 func _ready() -> void:
+	config_file.load(CONFIG_PATH)
 	TranslationServer.set_locale(OS.get_locale())
 
 

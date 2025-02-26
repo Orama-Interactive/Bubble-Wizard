@@ -9,7 +9,7 @@ func _ready() -> void:
 		var button := Button.new()
 		button.text = "Level %s" % (i + 1)
 		button.theme_type_variation = "UnchainedButton"
-		button.disabled = max_level < i - 1
+		button.disabled = max_level < i
 		grid_container.add_child(button)
 		button.pressed.connect(_on_level_button_pressed.bind(i))
 

@@ -7,6 +7,7 @@ var levels: Array[PackedScene] = [
 	preload("res://src/Levels/level_2.tscn"),
 	preload("res://src/Levels/level_3.tscn"),
 	preload("res://src/Levels/level_4.tscn"),
+	preload("res://src/Levels/level_5.tscn"),
 ]
 var config_file := ConfigFile.new()
 var current_level_index := 0

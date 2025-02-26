@@ -11,6 +11,8 @@ func _ready() -> void:
 		button.theme_type_variation = "UnchainedButton"
 		button.disabled = max_level < i
 		grid_container.add_child(button)
+		if i == 0:
+			button.grab_focus()
 		button.pressed.connect(_on_level_button_pressed.bind(i))
 
 

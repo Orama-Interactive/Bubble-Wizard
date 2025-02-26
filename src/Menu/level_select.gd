@@ -7,7 +7,7 @@ func _ready() -> void:
 	var max_level: int = GameManager.config_file.get_value("progress", "max_level", 0)
 	for i in GameManager.levels.size():
 		var button := Button.new()
-		button.text = "Level %s" % (i + 1)
+		button.text = tr("Level %s") % (i + 1)
 		button.theme_type_variation = "UnchainedButton"
 		button.disabled = max_level < i
 		grid_container.add_child(button)

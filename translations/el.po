@@ -44,6 +44,14 @@ msgstr "Μενού"
 msgid "Play"
 msgstr "Παίξε"
 
+#: src/Menu/menu.tscn
+msgid "Select level"
+msgstr "Επίλεξε πίστα"
+
+#: src/Menu/level_select.gd
+msgid "Level %s"
+msgstr "Πίστα %s"
+
 #: src/Menu/settings.tscn
 msgid "Settings"
 msgstr "Ρυθμίσεις"

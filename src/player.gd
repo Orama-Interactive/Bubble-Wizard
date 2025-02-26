@@ -124,7 +124,7 @@ func _normal_movement(delta: float) -> void:
 			animated_sprite_2d.play(&"fall")
 
 	var direction := _handle_horizontal_movement(horizontal_speed, horizontal_speed)
-	if not is_zero_approx(direction):
+	if not is_zero_approx(direction) and is_zero_approx(velocity.y):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
 			bubble_sprite_layer_3.play(&"idle")
@@ -231,7 +231,7 @@ func _charge_bubble_form() -> void:
 		bubble_sprite_layer_3.play(&"charge")
 		animated_sprite_2d.play(&"charge")
 		$Audios/BubbleCast.play()
-	if Input.is_action_just_released("charge_bubble") or bubble_cast_ray_cast_2d.is_colliding():
+	if Input.is_action_just_released("charge_bubble"):
 		if not charge_bubble_timer.is_stopped():
 			charge_bubble_timer.stop()
 			bubble_sprite_layer_3.position.y = 4
@@ -245,6 +245,8 @@ func _on_bubble_timer_timeout() -> void:
 
 
 func _on_charge_bubble_timer_timeout() -> void:
+	if bubble_cast_ray_cast_2d.is_colliding():
+		return
 	bubble_form = true
 	position.y -= bubble_spawn_position_offset
 

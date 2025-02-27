@@ -1,4 +1,4 @@
-##  RESPONSIVE TOUCHSCREEN JOYSTICK 1.0.1 ##
+##  RESPONSIVE TOUCHSCREEN JOYSTICK 1.0.2 ##
 
 @tool
 @icon("res://addons/touch_screen_joystick/touchscreenjoystickicon.png")
@@ -82,13 +82,14 @@ var knob_position : Vector2
 var finger_index := -1
 var default_pos : Vector2
 var current_input_event : InputEvent
-var centered_touch : Vector2
+var global_touch : Vector2
 
 func _ready() -> void:
 	default_pos = position
 	change_opacity()
 
 func _process(_delta: float) -> void:
+	
 	
 	# checks if currently pressing
 	if is_pressing:
@@ -105,6 +106,7 @@ func _process(_delta: float) -> void:
 
 #moves the knob position when pressing
 func move_knob_pos() -> void:
+	var centered_touch := global_touch - size / 2
 	
 	if get_distance() <= get_current_max_length():
 		
@@ -112,7 +114,7 @@ func move_knob_pos() -> void:
 	else:
 		# calculates the angle position of the knob if it's position --
 		# -- exceeds from the current max length
-		var angle := position.angle_to_point(centered_touch + position)
+		var angle := Vector2.ZERO.angle_to_point(centered_touch)
 		knob_position.x = cos(angle) * get_current_max_length()
 		knob_position.y = sin(angle) * get_current_max_length()
 
@@ -126,7 +128,7 @@ func reset_knob_pos() -> void:
 # triggers a specific input action based on the --
 # -- current direction
 func trigger_input_actions() -> void:
-	var dir := get_deadzoned_vector()
+	var dir := get_deadzoned_vector() * get_weight()
 	
 	if dir.x > 0:
 		Input.action_release(action_left)
@@ -303,7 +305,7 @@ func draw_textured_joystick() -> void:
 
 # draws the deadzone and the current max length
 func draw_debug() -> void:
-	var length_string := str(round(get_weight() * 100.0), "%")
+	var length_string := str(roundi(get_weight() * 100.0), "%")
 	var string_pos := knob_position / 2 + Vector2.UP * 100
 	var lerped_color := lerp(Color.RED, Color.GREEN, get_weight()) as Color
 	draw_set_transform(size / 2)
@@ -337,20 +339,21 @@ func _input(event: InputEvent) -> void:
 					# so the touch position starts from the center of the rect instead of --
 					# the top left corner of the rect, then divide it to scale.x so the 
 					# position keeps centered regardless of the current scale
-					centered_touch = (event.position - get_center_pos()) / scale.x
-					
+					global_touch = (event.position - global_position) /  get_global_transform().get_scale().x
+					get_viewport().set_input_as_handled()
 		else:
 			# resets the touch index and touch position
 			if event.index == finger_index:
 				finger_index = -1
-				centered_touch = Vector2.ZERO
+				global_touch = Vector2.ZERO
 				on_touch_released()
+				get_viewport().set_input_as_handled()
 	
 	# update the position when touch is moving
 	if event is InputEventScreenDrag:
 		if event.index == finger_index:
-			centered_touch = (event.position - get_center_pos()) / scale.x
-
+			global_touch = (event.position - global_position) / get_global_transform().get_scale().x
+			get_viewport().set_input_as_handled()
 
 func on_touched(event : InputEventScreenTouch) -> void:
 	is_pressing = true
@@ -387,7 +390,7 @@ func get_center_pos() -> Vector2:
 
 # returns the distance from center of the joystick to the position of the knob
 func get_distance() -> float:
-	return (centered_touch + position).distance_to(position)
+	return (global_touch - size / 2).distance_to(Vector2.ZERO)
 
 # get the current max distance of the knob's position. --
 # -- if you use textures, the current max length will --
@@ -425,5 +428,5 @@ func is_touch_in_rect(touch_pos : Vector2) -> bool:
 
 func get_weight() -> float:
 	var weight := (get_distance() / get_current_max_length())
-	weight = clamp(weight, 0, 1)
+	weight = clampf(weight, 0, 1)
 	return weight
